@@ -142,7 +142,7 @@ function Header() {
             component="div"
             sx={{ display: { xs: "none", sm: "block" } }}
           >
-            MUI
+            Livraria
           </Typography>
           <Search>
             <SearchIconWrapper>

@@ -1,6 +1,6 @@
 import "../styles/globals.css";
 import { ThemeProvider } from "@mui/material";
-import { globalTheme } from "../commons/helpers/styles/Themes.ts";
+import globalTheme from "../commons/helpers/styles/Themes";
 import Header from "../commons/components/templates/Header";
 import Footer from "../commons/components/templates/Footer";
 
