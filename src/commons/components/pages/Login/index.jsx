@@ -8,20 +8,26 @@ import React from "react";
 
 function Login() {
   return (
-    <Grid justifyContent="center" container>
+    <Grid
+      bgcolor="#ff9800"
+      minHeight="90vh"
+      justifyContent="center"
+      alignContent="center"
+      container
+    >
       <Grid item xs={6}>
-        <Box>
-          <Grid container justifyContent="center">
-            <Grid item xs={12}>
-              <TextField />
+        <Box bgcolor="white" borderColor="gray">
+          <Grid container padding="40px 0" spacing="20" justifyContent="center">
+            <Grid justifyContent="center" item container xs={12}>
+              <TextField label="Email" />
             </Grid>
-            <Grid item xs={12}>
-              <TextField />
+            <Grid justifyContent="center" container item xs={12}>
+              <TextField label="Password" />
             </Grid>
-            <Grid item xs={12}>
+            <Grid justifyContent="center" container item xs={12}>
               <Button variant="contained">Login</Button>
             </Grid>
-            <Grid item xs={12}>
+            <Grid justifyContent="center" container item xs={12}>
               <Typography>
                 Don&apos;t have an account?{" "}
                 <Link href="/signIn" passHref>
