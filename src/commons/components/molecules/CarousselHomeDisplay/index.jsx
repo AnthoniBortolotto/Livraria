@@ -3,6 +3,7 @@ import React from "react";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import { useRouter } from "next/router";
 import Caroussel from "../../atoms/Caroussel";
+import styles from "./CarousselHomeDisplay.module.scss";
 
 const items = [
   {
@@ -30,7 +31,11 @@ function CarousselHomeDisplay() {
       {isMobile ? (
         <Caroussel>
           {items.map(({ alt, link, img }) => (
-            <div key={alt} onClick={() => push(link)}>
+            <div
+              className={styles.containerMob}
+              key={alt}
+              onClick={() => push(link)}
+            >
               <img src={`${img}-Mob.png`} alt={alt} />
             </div>
           ))}
@@ -38,7 +43,11 @@ function CarousselHomeDisplay() {
       ) : (
         <Caroussel>
           {items.map(({ alt, link, img }) => (
-            <div key={alt} onClick={() => push(link)}>
+            <div
+              className={styles.containerDesk}
+              key={alt}
+              onClick={() => push(link)}
+            >
               <img src={`${img}.png`} alt={alt} />
             </div>
           ))}
