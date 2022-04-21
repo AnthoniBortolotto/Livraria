@@ -1,9 +1,9 @@
-/* eslint-disable react/jsx-no-useless-fragment */
 import React from "react";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import { useRouter } from "next/router";
 import Caroussel from "../../atoms/Caroussel";
 import styles from "./CarousselHomeDisplay.module.scss";
+import { mobileScreen } from "../../../helpers/utils/global";
 
 const items = [
   {
@@ -25,7 +25,7 @@ const items = [
 
 function CarousselHomeDisplay() {
   const { push } = useRouter();
-  const isMobile = useMediaQuery("(max-width:600px)");
+  const isMobile = useMediaQuery(mobileScreen);
   return (
     <>
       {isMobile ? (

@@ -1,5 +1,5 @@
 {
-  "extends": ["airbnb", "prettier", "next/core-web-vitals"],
+  "extends": ["prettier", "next/core-web-vitals"],
   "plugins": ["prettier"],
   "rules": {
     "prettier/prettier": [
@@ -13,11 +13,7 @@
         "react/jsx-props-no-spreading": "off"
       }
     ],
-    "react/jsx-props-no-spreading": "off",
-    "react/forbid-prop-types": "off",
-    "no-plusplus": "off",
-    "no-param-reassign": "off",
-    "array-callback-return": "off"
+    "@next/next/no-img-element": "off"
   },
   "parser": "@babel/eslint-parser",
   "parserOptions": {
