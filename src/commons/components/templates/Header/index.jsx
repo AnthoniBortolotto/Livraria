@@ -56,7 +56,7 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
   },
 }));
 
-function Header() {
+function Header({ setShowLoginForm }) {
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
 
@@ -181,7 +181,9 @@ function Header() {
                     aria-label="account of current user"
                     aria-controls={menuId}
                     aria-haspopup="true"
-                    onClick={handleProfileMenuOpen}
+                    onClick={() => {
+                      setShowLoginForm(true);
+                    }}
                     color="inherit"
                   >
                     <AccountCircle />

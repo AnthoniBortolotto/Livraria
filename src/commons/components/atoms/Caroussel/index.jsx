@@ -12,10 +12,10 @@ const defaultSettings = {
   autoplaySpeed: 3000,
 };
 
-function Caroussel({ children }) {
+function Caroussel({ children, settings = defaultSettings }) {
   return (
     <div>
-      <Slider {...defaultSettings}>{children}</Slider>
+      <Slider {...settings}>{children}</Slider>
     </div>
   );
 }

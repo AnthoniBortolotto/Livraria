@@ -6,7 +6,7 @@ import TextField from "@mui/material/TextField";
 import Link from "next/link";
 import React from "react";
 
-function Login() {
+function Form() {
   return (
     <Grid
       bgcolor="#ff9800"
@@ -42,4 +42,4 @@ function Login() {
   );
 }
 
-export default Login;
+export default Form;
