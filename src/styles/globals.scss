@@ -1,10 +1,12 @@
+@import "./variables.scss";
+
 html,
 body {
   padding: 0;
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
-    overflow-x: hidden;
+  overflow-x: hidden;
 }
 
 a {
@@ -14,4 +16,28 @@ a {
 
 * {
   box-sizing: border-box;
+}
+
+.containerMob {
+  max-width: 360px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 0;
+}
+
+.containerDesk {
+  @media (min-width: $desktopScreen) {
+    max-width: 1140px;
+    margin: 0 auto;
+  }
+}
+
+.container {
+  max-width: 360px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 0;
+  @media (min-width: $desktopScreen) {
+    max-width: 1140px;
+  }
 }

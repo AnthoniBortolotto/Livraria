@@ -4,6 +4,7 @@ import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
 import IconButton from "@mui/material/IconButton";
+import Grid from "@mui/material/Grid";
 import Typography from "@mui/material/Typography";
 import InputBase from "@mui/material/InputBase";
 import MenuItem from "@mui/material/MenuItem";
@@ -11,6 +12,9 @@ import Menu from "@mui/material/Menu";
 import SearchIcon from "@mui/icons-material/Search";
 import AccountCircle from "@mui/icons-material/AccountCircle";
 import Logo from "../../atoms/Logo";
+import MenuIcon from "@mui/icons-material/Menu";
+import { mobileScreen } from "../../../helpers/utils/global";
+import useMediaQuery from "@mui/material/useMediaQuery";
 
 const Search = styled("div")(({ theme }) => ({
   position: "relative",
@@ -129,54 +133,75 @@ function Header() {
       </MenuItem>
     </Menu>
   );
-
+  const isMobile = useMediaQuery(mobileScreen);
   return (
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position="static">
-        <Toolbar>
-          <Logo />
-
-          <Typography
-            variant="h6"
-            noWrap
-            component="div"
-            sx={{ display: { xs: "none", sm: "block" } }}
-          >
-            Livraria
-          </Typography>
-          <Search>
-            <SearchIconWrapper>
-              <SearchIcon />
-            </SearchIconWrapper>
-            <StyledInputBase
-              placeholder="Search…"
-              inputProps={{ "aria-label": "search" }}
-            />
-          </Search>
-          <Box sx={{ flexGrow: 1 }} />
-          <Box sx={{ display: { xs: "none", md: "flex" } }}>
-            <IconButton
-              size="large"
-              edge="end"
-              aria-label="account of current user"
-              aria-controls={menuId}
-              aria-haspopup="true"
-              onClick={handleProfileMenuOpen}
-              color="inherit"
-            >
-              <AccountCircle />
-            </IconButton>
-          </Box>
-          <Box sx={{ display: { xs: "flex", md: "none" } }}>
-            <IconButton
-              size="large"
-              aria-label="show more"
-              aria-controls={mobileMenuId}
-              aria-haspopup="true"
-              onClick={handleMobileMenuOpen}
-              color="inherit"
-            />
-          </Box>
+        <Toolbar className="container">
+          <Grid container>
+            {isMobile && (
+              <Grid container item xs={2} md={0}>
+                <MenuIcon sx={{ marginTop: "7px" }} fontSize="large" />
+              </Grid>
+            )}
+            <Grid item xs={2.5} md={0.75}>
+              <Logo />
+            </Grid>
+            {!isMobile && (
+              <Grid item container md={1}>
+                <Typography
+                  variant="h6"
+                  noWrap
+                  sx={{
+                    display: { xs: "none", sm: "block" },
+                    marginTop: "10px",
+                  }}
+                >
+                  Livraria
+                </Typography>
+              </Grid>
+            )}
+            <Grid item xs={7.5} md={4}>
+              <Search sx={{ marginTop: "6px" }}>
+                <SearchIconWrapper>
+                  <SearchIcon />
+                </SearchIconWrapper>
+                <StyledInputBase
+                  placeholder="Search…"
+                  inputProps={{ "aria-label": "search" }}
+                />
+              </Search>
+            </Grid>
+            {!isMobile && (
+              <Grid item md={6} container justifyContent="flex-end">
+                <Box sx={{ display: { xs: "none", md: "flex" } }}>
+                  <IconButton
+                    size="large"
+                    edge="end"
+                    aria-label="account of current user"
+                    aria-controls={menuId}
+                    aria-haspopup="true"
+                    onClick={handleProfileMenuOpen}
+                    color="inherit"
+                  >
+                    <AccountCircle />
+                  </IconButton>
+                </Box>
+              </Grid>
+            )}
+            {/*             <Grid item xs={4}>
+              <Box sx={{ display: { xs: "flex", md: "none" } }}>
+                <IconButton
+                  size="large"
+                  aria-label="show more"
+                  aria-controls={mobileMenuId}
+                  aria-haspopup="true"
+                  onClick={handleMobileMenuOpen}
+                  color="inherit"
+                />
+              </Box>
+            </Grid> */}
+          </Grid>
         </Toolbar>
       </AppBar>
       {renderMobileMenu}
