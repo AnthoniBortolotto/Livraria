@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import Dialog from "@mui/material/Dialog";
@@ -13,25 +13,41 @@ import { change } from "../../../redux/loginFormSlice";
 function LoginForm() {
   const showLoginForm = useSelector(({ showLoginForm }) => showLoginForm.value);
   const dispatch = useDispatch();
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
   return (
-    <div>
-      {showLoginForm ? "true" : "false"}
+    <div style={{ maxWidth: "100vw" }}>
       <Dialog open={showLoginForm} onClose={() => dispatch(change())}>
-        <DialogTitle>Subscribe</DialogTitle>
+        <DialogTitle>Faça login em sua conta</DialogTitle>
         <DialogContent>
-          <DialogContentText>
-            To subscribe to this website, please enter your email address here.
-            We will send updates occasionally.
-          </DialogContentText>
           <TextField
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
             autoFocus
             margin="dense"
             id="name"
-            label="Email Address"
+            label="Email"
             type="email"
             fullWidth
             variant="standard"
           />
+          <TextField
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            autoFocus
+            margin="dense"
+            id="password"
+            label="Senha"
+            type="password"
+            fullWidth
+            variant="standard"
+          />
+          <DialogContentText>
+            Não possui uma conta? Crie uma agora clicando{" "}
+            <span className="linkButton" onClick={() => dispatch(change())}>
+              aqui
+            </span>
+          </DialogContentText>
         </DialogContent>
         <DialogActions>
           <Button onClick={() => dispatch(change())}>Cancel</Button>

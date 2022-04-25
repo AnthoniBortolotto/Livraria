@@ -1,4 +1,5 @@
 @import "./variables.scss";
+@import "./mixins.scss";
 
 html,
 body {
@@ -39,5 +40,14 @@ a {
   padding: 0;
   @media (min-width: $desktopScreen) {
     max-width: 1140px;
+  }
+}
+
+.linkButton {
+  color: blue;
+  text-decoration: none;
+  &:hover {
+    text-decoration: underline;
+    cursor: pointer;
   }
 }

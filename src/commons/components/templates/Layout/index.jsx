@@ -11,12 +11,6 @@ function Layout({ children }) {
       <Header />
       <div>{children}</div>
       <Footer />
-
-      {/*       <SignUpForm
-  showSignUpForm={showSignUpForm}
-  setShowLoginForm={setShowLoginForm}
-  setShowSignUpForm={setShowSignUpForm}
-/> */}
     </>
   );
 }
