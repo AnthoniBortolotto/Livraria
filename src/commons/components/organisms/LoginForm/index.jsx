@@ -7,11 +7,16 @@ import DialogContentText from "@mui/material/DialogContentText";
 import TextField from "@mui/material/TextField";
 import DialogTitle from "@mui/material/DialogTitle";
 import DialogActions from "@mui/material/DialogActions";
+import { useSelector, useDispatch } from "react-redux";
+import { change } from "../../../redux/loginFormSlice";
 
-function LoginForm({ showLoginForm, setShowLoginForm, setShowSignUpForm }) {
+function LoginForm() {
+  const showLoginForm = useSelector(({ showLoginForm }) => showLoginForm.value);
+  const dispatch = useDispatch();
   return (
     <div>
-      <Dialog open={showLoginForm} onClose={() => setShowLoginForm(false)}>
+      {showLoginForm ? "true" : "false"}
+      <Dialog open={showLoginForm} onClose={() => dispatch(change())}>
         <DialogTitle>Subscribe</DialogTitle>
         <DialogContent>
           <DialogContentText>
@@ -29,8 +34,8 @@ function LoginForm({ showLoginForm, setShowLoginForm, setShowSignUpForm }) {
           />
         </DialogContent>
         <DialogActions>
-          <Button onClick={setShowLoginForm(false)}>Cancel</Button>
-          <Button onClick={setShowLoginForm(false)}>Subscribe</Button>
+          <Button onClick={() => dispatch(change())}>Cancel</Button>
+          <Button onClick={() => dispatch(change())}>Subscribe</Button>
         </DialogActions>
       </Dialog>
     </div>

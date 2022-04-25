@@ -1,4 +1,4 @@
-import * as React from "react";
+import React, { useState } from "react";
 import { styled, alpha } from "@mui/material/styles";
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
@@ -15,6 +15,9 @@ import Logo from "../../atoms/Logo";
 import MenuIcon from "@mui/icons-material/Menu";
 import { mobileScreen } from "../../../helpers/utils/global";
 import useMediaQuery from "@mui/material/useMediaQuery";
+import LoginForm from "../../organisms/LoginForm";
+import { useSelector, useDispatch } from "react-redux";
+import { change } from "../../../redux/loginFormSlice";
 
 const Search = styled("div")(({ theme }) => ({
   position: "relative",
@@ -56,7 +59,7 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
   },
 }));
 
-function Header({ setShowLoginForm }) {
+function Header() {
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
 
@@ -134,64 +137,67 @@ function Header({ setShowLoginForm }) {
     </Menu>
   );
   const isMobile = useMediaQuery(mobileScreen);
+  const showLoginForm = useSelector(({ showLoginForm }) => showLoginForm.value);
+  const dispatch = useDispatch();
   return (
-    <Box sx={{ flexGrow: 1 }}>
-      <AppBar position="static">
-        <Toolbar className="container">
-          <Grid container>
-            {isMobile && (
-              <Grid container item xs={2} md={0}>
-                <MenuIcon sx={{ marginTop: "7px" }} fontSize="large" />
+    <>
+      <Box sx={{ flexGrow: 1 }}>
+        <AppBar position="static">
+          <Toolbar className="container">
+            <Grid container>
+              {isMobile && (
+                <Grid container item xs={2} md={0}>
+                  <MenuIcon sx={{ marginTop: "7px" }} fontSize="large" />
+                </Grid>
+              )}
+              <Grid item xs={2.5} md={0.75}>
+                <Logo />
               </Grid>
-            )}
-            <Grid item xs={2.5} md={0.75}>
-              <Logo />
-            </Grid>
-            {!isMobile && (
-              <Grid item container md={1}>
-                <Typography
-                  variant="h6"
-                  noWrap
-                  sx={{
-                    display: { xs: "none", sm: "block" },
-                    marginTop: "10px",
-                  }}
-                >
-                  Livraria
-                </Typography>
-              </Grid>
-            )}
-            <Grid item xs={7.5} md={4}>
-              <Search sx={{ marginTop: "6px" }}>
-                <SearchIconWrapper>
-                  <SearchIcon />
-                </SearchIconWrapper>
-                <StyledInputBase
-                  placeholder="Search…"
-                  inputProps={{ "aria-label": "search" }}
-                />
-              </Search>
-            </Grid>
-            {!isMobile && (
-              <Grid item md={6} container justifyContent="flex-end">
-                <Box sx={{ display: { xs: "none", md: "flex" } }}>
-                  <IconButton
-                    size="large"
-                    edge="end"
-                    aria-label="account of current user"
-                    aria-controls={menuId}
-                    aria-haspopup="true"
-                    onClick={() => {
-                      setShowLoginForm(true);
+              {!isMobile && (
+                <Grid item container md={1}>
+                  <Typography
+                    variant="h6"
+                    noWrap
+                    sx={{
+                      display: { xs: "none", sm: "block" },
+                      marginTop: "10px",
                     }}
-                    color="inherit"
                   >
-                    <AccountCircle />
-                  </IconButton>
-                </Box>
+                    Livraria
+                  </Typography>
+                </Grid>
+              )}
+              <Grid item xs={7.5} md={4}>
+                <Search sx={{ marginTop: "6px" }}>
+                  <SearchIconWrapper>
+                    <SearchIcon />
+                  </SearchIconWrapper>
+                  <StyledInputBase
+                    placeholder="Search…"
+                    inputProps={{ "aria-label": "search" }}
+                  />
+                </Search>
               </Grid>
-            )}
-            {/*             <Grid item xs={4}>
+              {!isMobile && (
+                <Grid item md={6} container justifyContent="flex-end">
+                  <Box sx={{ display: { xs: "none", md: "flex" } }}>
+                    <IconButton
+                      size="large"
+                      edge="end"
+                      aria-label="account of current user"
+                      aria-controls={menuId}
+                      aria-haspopup="true"
+                      onClick={() => {
+                        dispatch(change());
+                      }}
+                      color="inherit"
+                    >
+                      <AccountCircle />
+                    </IconButton>
+                  </Box>
+                </Grid>
+              )}
+              {/*             <Grid item xs={4}>
               <Box sx={{ display: { xs: "flex", md: "none" } }}>
                 <IconButton
                   size="large"
@@ -203,12 +209,14 @@ function Header({ setShowLoginForm }) {
                 />
               </Box>
             </Grid> */}
-          </Grid>
-        </Toolbar>
-      </AppBar>
-      {renderMobileMenu}
-      {renderMenu}
-    </Box>
+            </Grid>
+          </Toolbar>
+        </AppBar>
+        {renderMobileMenu}
+        {renderMenu}
+      </Box>
+      <LoginForm />
+    </>
   );
 }
 

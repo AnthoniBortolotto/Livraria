@@ -1,20 +1,20 @@
 import "../styles/globals.scss";
 import { ThemeProvider } from "@mui/material";
 import globalTheme from "../commons/helpers/styles/Themes";
-import Header from "../commons/components/templates/Header";
-import Footer from "../commons/components/templates/Footer";
-import LoginForm from "../commons/components/organisms/LoginForm";
-import SignUpForm from "../commons/components/organisms/SignUpForm";
-import React, { useState } from "react";
+import React from "react";
+import { store } from "../commons/redux/store";
 import Layout from "../commons/components/templates/Layout";
+import { Provider } from "react-redux";
 
 function MyApp({ Component, pageProps }) {
   return (
-    <ThemeProvider theme={globalTheme}>
-      <Layout>
-        <Component {...pageProps} />
-      </Layout>
-    </ThemeProvider>
+    <Provider store={store}>
+      <ThemeProvider theme={globalTheme}>
+        <Layout>
+          <Component {...pageProps} />
+        </Layout>
+      </ThemeProvider>
+    </Provider>
   );
 }
 
