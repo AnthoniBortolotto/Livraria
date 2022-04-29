@@ -1,0 +1,12 @@
+.prev {
+  transform: rotate(180deg);
+}
+
+.next {
+}
+.Button {
+  max-width: 50px;
+  &:hover {
+    cursor: pointer;
+  }
+}
