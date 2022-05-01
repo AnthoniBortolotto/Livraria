@@ -1,5 +1,5 @@
-import { Settings } from "react-slick";
 import NextArrow from "../../components/atoms/NextArrow";
+import PrevArrow from "../../components/atoms/PrevArrow";
 
 export const mobileScreen = "(max-width:600px)";
 export const itemSettings = {
@@ -8,22 +8,21 @@ export const itemSettings = {
   speed: 500,
   slidesToShow: 6,
   slidesToScroll: 1,
-  autoplay: false,
   swipe: true,
   nextArrow: <NextArrow />,
-  prevArrow: <NextArrow />,
+  prevArrow: <PrevArrow />,
   responsive: [
     {
-      breakpoint: 1024,
+      breakpoint: 1280,
       settings: {
-        slidesToShow: 5,
+        slidesToShow: 4,
         slidesToScroll: 1,
         infinite: true,
         dots: false,
       },
     },
     {
-      breakpoint: 600,
+      breakpoint: 900,
       settings: {
         slidesToShow: 3,
         slidesToScroll: 1,
@@ -31,8 +30,9 @@ export const itemSettings = {
       },
     },
     {
-      breakpoint: 480,
+      breakpoint: 600,
       settings: {
+        arrows: false,
         slidesToShow: 2,
         slidesToScroll: 1,
       },

@@ -1,6 +1,8 @@
+@import "../../../../styles/mixins.scss";
+
 .containerMob {
     img {
-        max-width: 360px;
+        @include container;
         margin: 0 auto;
     }
     
@@ -8,7 +10,7 @@
 
 .containerDesk {
     img {
-        max-width: 1140px;
         margin: 0 auto;
+        @include container
     }
 }

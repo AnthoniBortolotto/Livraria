@@ -150,7 +150,7 @@ function Header() {
                   <MenuIcon sx={{ marginTop: "7px" }} fontSize="large" />
                 </Grid>
               )}
-              <Grid item xs={2.5} md={0.75}>
+              <Grid item xs={2.5} md={1} lg={0.75}>
                 <Logo />
               </Grid>
               {!isMobile && (

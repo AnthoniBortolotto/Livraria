@@ -23,9 +23,7 @@ function Home() {
       <HeadHtml />
       <CarousselHomeDisplay />
       <CarousselItens items={itemList} />
-      <Grid container sx={{ minHeight: "80vh" }}>
-        <Button variant="contained">Home</Button>
-      </Grid>
+      <Grid container sx={{ minHeight: "80vh" }}></Grid>
     </>
   );
 }

@@ -1,7 +1,11 @@
+@import "../../../../styles/mixins.scss";
+
 .cardItem {
+    
 }
 
 .containerDesk {
-    max-width: 1140px;
+    max-width: 360px;
     margin: auto;
+    @include container;
 }
