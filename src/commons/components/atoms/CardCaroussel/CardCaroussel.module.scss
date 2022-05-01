@@ -1,0 +1,20 @@
+.CardStyle {
+  &:hover {
+    cursor: pointer;
+    text-decoration: underline;
+  }
+}
+.CardMediaStyle {
+  width: 175px;
+  height: 250px;
+}
+.CardContentStyle {
+  width: 80%;
+}
+.ProdutoStyle {
+  text-align: center;
+  font-size: 12pt;
+}
+.PrecoStyle {
+  text-align: center;
+}
