@@ -21,7 +21,8 @@ function CarousselItens({ items, title }) {
                   CardMediaTitle={title}
                   CardMediaLink={imgUrl}
                   ContentTitle={creator}
-                  ContentText={rank}
+                  rank={rank}
+                  ContentText={"Compre agora"}
                 />
               </div>
             )

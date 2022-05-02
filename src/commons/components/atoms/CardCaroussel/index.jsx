@@ -4,6 +4,7 @@ import Card from "@mui/material/Card";
 import CardMedia from "@mui/material/CardMedia";
 import CardContent from "@mui/material/CardContent";
 import Grid from "@mui/material/Grid";
+import StarRatings from "react-star-ratings";
 import styles from "./CardCaroussel.module.scss";
 
 export default function CardCarousel({
@@ -11,6 +12,7 @@ export default function CardCarousel({
   CardMediaLink,
   ContentTitle,
   ContentText,
+  rank,
 }) {
   function handlerCardClick() {
     const url = `/${ContentTitle.replace("%", "$")}`;
@@ -31,6 +33,11 @@ export default function CardCarousel({
           <Typography component="h6" className={styles.ProdutoStyle}>
             {ContentTitle}
           </Typography>
+          <StarRatings
+            rating={2.403}
+            starRatedColor="orange"
+            starDimension="15"
+          />
           <Typography component="p" className={styles.PrecoStyle}>
             {ContentText}
           </Typography>
