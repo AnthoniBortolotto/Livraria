@@ -22,7 +22,7 @@ function CarousselItens({ items, title }) {
                   CardMediaLink={imgUrl}
                   ContentTitle={creator}
                   rank={rank}
-                  ContentText={"Compre agora"}
+                  ContentText={"Veja mais"}
                 />
               </div>
             )

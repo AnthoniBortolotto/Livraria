@@ -6,6 +6,7 @@ import CardContent from "@mui/material/CardContent";
 import Grid from "@mui/material/Grid";
 import StarRatings from "react-star-ratings";
 import styles from "./CardCaroussel.module.scss";
+import Button from "@mui/material/Button";
 
 export default function CardCarousel({
   CardMediaTitle,
@@ -21,7 +22,7 @@ export default function CardCarousel({
   }
 
   return (
-    <Grid container item alignContent="stretch" justify="space-between">
+    <Grid container item alignContent="stretch" justifyContent="space-between">
       <Card className={styles.CardStyle} onClick={handlerCardClick}>
         <CardContent>
           <CardMedia
@@ -38,9 +39,13 @@ export default function CardCarousel({
             starRatedColor="orange"
             starDimension="15"
           />
-          <Typography component="p" className={styles.PrecoStyle}>
-            {ContentText}
-          </Typography>
+          <div className={styles.CardButtonContainer}>
+            <Button variant="outlined">
+              <Typography variant="p" component="p">
+                {ContentText}
+              </Typography>
+            </Button>
+          </div>
         </CardContent>
       </Card>
     </Grid>

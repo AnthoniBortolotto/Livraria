@@ -1,13 +1,22 @@
+@import "../../../../styles/variables.scss";
+
 .CardStyle {
   &:hover {
     cursor: pointer;
     text-decoration: underline;
   }
 }
+
 .CardMediaStyle {
   width: 175px;
   height: 250px;
+  margin: auto;
 }
+
+.CardButtonContainer {
+  margin: auto;
+}
+
 .CardContentStyle {
   width: 80%;
 }

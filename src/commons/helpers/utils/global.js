@@ -6,11 +6,11 @@ export const itemSettings = {
   dots: false,
   infinite: true,
   speed: 500,
-  slidesToShow: 6,
+  slidesToShow: 5,
   slidesToScroll: 1,
   swipe: true,
-  nextArrow: <NextArrow />,
-  prevArrow: <PrevArrow />,
+  /*   nextArrow: <NextArrow />,
+  prevArrow: <PrevArrow />, */
   responsive: [
     {
       breakpoint: 1280,

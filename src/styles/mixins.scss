@@ -25,8 +25,8 @@ $breakpoints: (
 }
 
 @mixin container {
-    max-width: 360px;
-    @include breakpoint-up("sm"){
+    max-width: 95%;
+ /*    @include breakpoint-up("sm"){
         max-width: 414px;
     }
     @include breakpoint-up("md"){
@@ -37,5 +37,5 @@ $breakpoints: (
     }
     @include breakpoint-up("xl"){
         max-width: 1140px;
-    }
+    } */
 }
