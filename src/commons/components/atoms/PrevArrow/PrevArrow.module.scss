@@ -4,5 +4,8 @@
     cursor: pointer;
     color: unset;
   }
+  &::before {
+    display: none;
+  }
   color: unset;
 }

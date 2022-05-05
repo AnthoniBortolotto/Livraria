@@ -31,7 +31,11 @@ export default function CardCarousel({
             className={styles.CardMediaStyle}
           />
 
-          <Typography component="h6" className={styles.ProdutoStyle}>
+          <Typography
+            component="h3"
+            variant="h6"
+            className={styles.ProdutoStyle}
+          >
             {ContentTitle}
           </Typography>
           <StarRatings

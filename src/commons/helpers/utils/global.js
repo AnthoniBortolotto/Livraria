@@ -9,8 +9,8 @@ export const itemSettings = {
   slidesToShow: 5,
   slidesToScroll: 1,
   swipe: true,
-  /*   nextArrow: <NextArrow />,
-  prevArrow: <PrevArrow />, */
+  nextArrow: <NextArrow />,
+  prevArrow: <PrevArrow />,
   responsive: [
     {
       breakpoint: 1280,
