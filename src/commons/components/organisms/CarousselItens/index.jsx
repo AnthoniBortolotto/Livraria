@@ -14,13 +14,15 @@ function CarousselItens({ items, title }) {
       </Typography>
       <Caroussel settings={itemSettings}>
         {items.map(
-          ({ title, imgUrl, creator, rank }, index) =>
+          ({ title, imgUrl, link, genres, creator, rank }, index) =>
             index < 12 && (
               <div className={styles.cardItem} key={index}>
                 <CardCarousel
                   CardMediaTitle={title}
                   CardMediaLink={imgUrl}
                   ContentTitle={creator}
+                  link={link}
+                  genres={genres}
                   rank={rank}
                   ContentText={"Veja mais"}
                 />

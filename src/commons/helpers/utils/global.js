@@ -1,6 +1,7 @@
 import NextArrow from "../../components/atoms/NextArrow";
 import PrevArrow from "../../components/atoms/PrevArrow";
 
+
 export const mobileScreen = "(max-width:600px)";
 export const itemSettings = {
   dots: false,
@@ -39,3 +40,4 @@ export const itemSettings = {
     },
   ],
 };
+export const domain = 'http://localhost:3001'

@@ -13,12 +13,14 @@ export default function CardCarousel({
   CardMediaLink,
   ContentTitle,
   ContentText,
+  genres,
+  link,
   rank,
 }) {
   function handlerCardClick() {
     const url = `/${ContentTitle.replace("%", "$")}`;
     url.replace(" ", "%");
-    window.location.href = `http://localhost:3000${url}`;
+    window.location.href = link;
   }
 
   return (
@@ -39,9 +41,10 @@ export default function CardCarousel({
             {ContentTitle}
           </Typography>
           <StarRatings
-            rating={2.403}
+            rating={rank}
+            numberOfStars = {5}
             starRatedColor="orange"
-            starDimension="15"
+            starDimension="15px"
           />
           <div className={styles.CardButtonContainer}>
             <Button variant="outlined">

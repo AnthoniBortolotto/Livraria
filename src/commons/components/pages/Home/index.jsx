@@ -1,10 +1,20 @@
 import { Grid } from "@mui/material";
-import React from "react";
+import React, {useEffect} from "react";
 import HeadHtml from "../../templates/Head";
 import CarousselItens from "../../organisms/CarousselItens";
 import CarousselHomeDisplay from "../../molecules/CarousselHomeDisplay";
+import axios from "axios";
+import { domain } from "../../../helpers/utils/global";
 
 function Home({ itemList }) {
+
+  useEffect(() => {
+    axios.get(`${domain}/livros/get`).then(books => {
+      console.log(books.data);
+    })
+    
+  }, [])
+  
   return (
     <>
       <HeadHtml />

@@ -1,4 +1,6 @@
 import Home from "../commons/components/pages/Home";
+import axios from "axios";
+import { domain } from "../commons/helpers/utils/global";
 
 export const getStaticProps = async (ctx) => {
   const item = {
@@ -10,10 +12,36 @@ export const getStaticProps = async (ctx) => {
     creator: "Teste creator",
   };
 
+
   const itemList = [];
-  for (let i = 0; i < 20; i++) {
-    itemList.push(item);
-  }
+
+
+//  for (let i = 0; i < 20.length; i++) {
+//    const element = 20[i];
+   
+//  }
+
+  const books = await axios.get(`${domain}/livros/get`)
+  books.data.map(({
+    img,
+    author,
+    genre,
+    rating,
+    title
+
+  }, i) => {
+    if (i > 78 && author.search(/[¿¥‡]+/) === -1) {
+      itemList.push({
+        title,
+        creator: author,
+        imgUrl: img,
+        link: `/${author}/${title}`,
+        genres: genre,
+        rank: parseFloat(rating)
+      })
+    }
+
+  })
 
   return {
     props: {
