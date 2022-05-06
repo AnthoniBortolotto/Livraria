@@ -36,7 +36,7 @@ export const getStaticProps = async (ctx) => {
         creator: author,
         imgUrl: img,
         link: `/${author}/${title}`,
-        genres: genre ? genre.split(',') : null,
+        genres: genre,
         rank: parseFloat(rating)
       })
     }

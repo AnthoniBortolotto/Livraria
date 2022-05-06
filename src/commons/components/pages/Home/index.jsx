@@ -16,15 +16,15 @@ function Home({ itemList }) {
 
 
 
-  itemList.map((item) => {
-    item.genres?.map((genre) => {
-      if ('drama' === genre.toLowerCase()){
-        dramaFilter.push(item)
-        console.log(item)}
+  // itemList.map((item) => {
+  //   item.genres?.map((genre) => {
+  //     if ('drama' === genre.toLowerCase()){
+  //       dramaFilter.push(item)
+  //       console.log(item)}
 
-    })
+  //   })
     
-  })
+  // })
 
   return (
     <>
@@ -33,7 +33,7 @@ function Home({ itemList }) {
         <CarousselHomeDisplay />
       </section>
       <section className="default-margin">
-        <CarousselItens items={dramaFilter} title="Os mais populares" />
+        <CarousselItens items={itemList} title="Os mais populares" />
       </section>
       <section className="background-yellow default-margin">
         <CarousselItens items={itemList} title="Destaques" />
