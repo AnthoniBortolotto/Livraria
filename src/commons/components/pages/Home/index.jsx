@@ -1,5 +1,5 @@
 import { Grid } from "@mui/material";
-import React, {useEffect} from "react";
+import React, { useEffect } from "react";
 import HeadHtml from "../../templates/Head";
 import CarousselItens from "../../organisms/CarousselItens";
 import CarousselHomeDisplay from "../../molecules/CarousselHomeDisplay";
@@ -7,14 +7,25 @@ import axios from "axios";
 import { domain } from "../../../helpers/utils/global";
 
 function Home({ itemList }) {
+  const dramaFilter = [];
 
   useEffect(() => {
-    axios.get(`${domain}/livros/get`).then(books => {
-      console.log(books.data);
+
+
+  }, [])
+
+
+
+  itemList.map((item) => {
+    item.genres?.map((genre) => {
+      if ('drama' === genre.toLowerCase()){
+        dramaFilter.push(item)
+        console.log(item)}
+
     })
     
-  }, [])
-  
+  })
+
   return (
     <>
       <HeadHtml />
@@ -22,7 +33,7 @@ function Home({ itemList }) {
         <CarousselHomeDisplay />
       </section>
       <section className="default-margin">
-        <CarousselItens items={itemList} title="Os mais populares" />
+        <CarousselItens items={dramaFilter} title="Os mais populares" />
       </section>
       <section className="background-yellow default-margin">
         <CarousselItens items={itemList} title="Destaques" />
