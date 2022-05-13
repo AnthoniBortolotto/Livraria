@@ -18,9 +18,9 @@ function CarousselItens({ items, title }) {
             index < 12 && (
               <div className={styles.cardItem} key={index}>
                 <CardCarousel
-                  CardMediaTitle={title}
+                  CardMediaTitle={creator}
                   CardMediaLink={imgUrl}
-                  ContentTitle={creator}
+                  ContentTitle={title}
                   link={link}
                   genres={genres}
                   rank={rank}

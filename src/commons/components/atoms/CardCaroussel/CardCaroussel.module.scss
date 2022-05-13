@@ -1,6 +1,9 @@
 @import "../../../../styles/variables.scss";
 
 .CardStyle {
+  height: 430px;
+  margin-bottom: 2px;
+  width: 80%;
   &:hover {
     cursor: pointer;
     text-decoration: underline;
@@ -14,7 +17,16 @@
 }
 
 .CardButtonContainer {
+  display: flex;
+  justify-content: center;
   margin: auto;
+}
+
+.ContentContainer{
+  display: flex;
+  flex-direction: column;
+  align-content: space-between;
+  height: 160px;
 }
 
 .CardContentStyle {
@@ -22,7 +34,12 @@
 }
 .ProdutoStyle {
   text-align: center;
-  font-size: 12pt;
+  max-width: 75%;
+  font-size: 11pt;
+}
+.AuthorStyle {
+  max-width: 100%;
+  font-size: 8pt;
 }
 .PrecoStyle {
   text-align: center;

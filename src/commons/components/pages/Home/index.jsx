@@ -6,15 +6,9 @@ import CarousselHomeDisplay from "../../molecules/CarousselHomeDisplay";
 import axios from "axios";
 import { domain } from "../../../helpers/utils/global";
 
-function Home({ itemList }) {
+function Home({ itemList, authorPauloC }) {
   const dramaFilter = [];
-
-  useEffect(() => {
-
-
-  }, [])
-
-
+  useEffect(() => {}, []);
 
   // itemList.map((item) => {
   //   item.genres?.map((genre) => {
@@ -23,7 +17,7 @@ function Home({ itemList }) {
   //       console.log(item)}
 
   //   })
-    
+
   // })
 
   return (
@@ -42,7 +36,7 @@ function Home({ itemList }) {
         <CarousselItens items={itemList} title="Com desconto" />
       </section>
       <section className="background-yellow default-margin">
-        <CarousselItens items={itemList} title="De Paulo Coelho" />
+        <CarousselItens items={authorPauloC} title="De Paulo Coelho" />
       </section>
     </>
   );

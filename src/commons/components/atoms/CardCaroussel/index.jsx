@@ -24,7 +24,7 @@ export default function CardCarousel({
   }
 
   return (
-    <Grid container item alignContent="stretch" justifyContent="space-between">
+    <Grid container item justifyContent="space-between">
       <Card className={styles.CardStyle} onClick={handlerCardClick}>
         <CardContent>
           <CardMedia
@@ -32,26 +32,40 @@ export default function CardCarousel({
             image={CardMediaLink}
             className={styles.CardMediaStyle}
           />
-
-          <Typography
-            component="h3"
-            variant="h6"
-            className={styles.ProdutoStyle}
-          >
-            {ContentTitle}
-          </Typography>
-          <StarRatings
-            rating={rank}
-            numberOfStars = {5}
-            starRatedColor="orange"
-            starDimension="15px"
-          />
-          <div className={styles.CardButtonContainer}>
-            <Button variant="outlined">
-              <Typography variant="p" component="p">
-                {ContentText}
+          <div className={styles.ContentContainer}>
+            <div className={styles.CardButtonContainer}>
+              <Typography
+                component="h3"
+                variant="h6"
+                className={styles.ProdutoStyle}
+              >
+                {ContentTitle}
               </Typography>
-            </Button>
+            </div>
+            <div className={styles.CardButtonContainer}>
+              <Typography
+                component="p"
+                variant="p"
+                className={styles.AuthorStyle}
+              >
+                {CardMediaTitle}
+              </Typography>
+            </div>
+            <div className={styles.CardButtonContainer}>
+              <StarRatings
+                rating={rank}
+                numberOfStars={5}
+                starRatedColor="orange"
+                starDimension="15px"
+              />
+            </div>
+            <div className={styles.CardButtonContainer}>
+              <Button variant="outlined">
+                <Typography variant="p" component="p">
+                  {ContentText}
+                </Typography>
+              </Button>
+            </div>
           </div>
         </CardContent>
       </Card>

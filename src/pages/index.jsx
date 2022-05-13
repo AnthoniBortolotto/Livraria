@@ -12,24 +12,15 @@ export const getStaticProps = async (ctx) => {
     creator: "Teste creator",
   };
 
-
   const itemList = [];
 
+  //  for (let i = 0; i < 20.length; i++) {
+  //    const element = 20[i];
 
-//  for (let i = 0; i < 20.length; i++) {
-//    const element = 20[i];
-   
-//  }
+  //  }
 
-  const books = await axios.get(`${domain}/livros/get`)
-  books.data.map(({
-    img,
-    author,
-    genre,
-    rating,
-    title
-
-  }, i) => {
+  const books = await axios.get(`${domain}/livros/get`);
+  books.data.map(({ img, author, genre, rating, title }, i) => {
     if (i > 78 && author.search(/[¿¥‡]+/) === -1) {
       itemList.push({
         title,
@@ -37,19 +28,32 @@ export const getStaticProps = async (ctx) => {
         imgUrl: img,
         link: `/${author}/${title}`,
         genres: genre,
-        rank: parseFloat(rating)
-      })
+        rank: parseFloat(rating),
+      });
     }
+  });
 
-  })
+  const authorPauloC = [];
+  const itensPauloC = await axios.get(`${domain}/livros/get/Paulo Coelho`);
+  itensPauloC.data.map(({ img, author, genre, rating, title }, i) => {
+    authorPauloC.push({
+      title,
+      creator: author,
+      imgUrl: img,
+      link: `/${author}/${title}`,
+      genres: genre,
+      rank: parseFloat(rating),
+    });
+  });
 
   return {
     props: {
+      authorPauloC,
       itemList,
     },
   };
 };
 
-export default function Page({ itemList }) {
-  return <Home itemList={itemList} />;
+export default function Page({ itemList, authorPauloC }) {
+  return <Home itemList={itemList} authorPauloC={authorPauloC} />;
 }

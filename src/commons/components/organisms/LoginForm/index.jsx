@@ -9,7 +9,12 @@ import DialogTitle from "@mui/material/DialogTitle";
 import DialogActions from "@mui/material/DialogActions";
 import { useSelector, useDispatch } from "react-redux";
 import { change } from "../../../redux/loginFormSlice";
-import { verificarEmail, verificarSenha } from "../../../helpers/utils/formValidation";
+import {
+  verificarEmail,
+  verificarSenha,
+} from "../../../helpers/utils/formValidation";
+import axios from "axios";
+import { changeSignIn } from "../../../redux/signInFormSlice";
 
 function LoginForm() {
   const showLoginForm = useSelector(({ showLoginForm }) => showLoginForm.value);
@@ -20,10 +25,22 @@ function LoginForm() {
   const [errorSenha, setErrorSenha] = useState(false);
   const [errorMsgEmail, setErrorMsgEmail] = useState("");
   const [errorMsgSenha, setErrorMsgSenha] = useState("");
-
-
-
-
+  /*
+  const createUser = () => {
+    axios
+      .post("/user", {
+        nome: "Fred",
+        login: "Flintstone",
+        senha: "XVIDEOS",
+      })
+      .then(function (response) {
+        console.log(response);
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+  };
+*/
   return (
     <div style={{ maxWidth: "100vw" }}>
       <Dialog open={showLoginForm} onClose={() => dispatch(change())}>
@@ -32,8 +49,8 @@ function LoginForm() {
           <TextField
             value={email}
             onChange={(e) => {
-              setEmail(e.target.value)
-              setErrorMsgEmail(verificarEmail(email))
+              setEmail(e.target.value);
+              setErrorMsgEmail(verificarEmail(email));
               if (errorMsgEmail !== "") {
                 setErrorEmail(true);
               } else {
@@ -41,7 +58,7 @@ function LoginForm() {
               }
             }}
             onClick={() => {
-              setErrorMsgEmail(verificarEmail(email))
+              setErrorMsgEmail(verificarEmail(email));
               if (errorMsgEmail !== "") {
                 setErrorEmail(true);
               } else {
@@ -61,8 +78,8 @@ function LoginForm() {
           <TextField
             value={password}
             onChange={(e) => {
-              setPassword(e.target.value)
-              setErrorMsgSenha(verificarSenha(password))
+              setPassword(e.target.value);
+              setErrorMsgSenha(verificarSenha(password));
               if (errorMsgSenha !== "") {
                 setErrorSenha(true);
               } else {
@@ -70,7 +87,7 @@ function LoginForm() {
               }
             }}
             onClick={() => {
-              setErrorSenha(verificarSenha(password))
+              setErrorSenha(verificarSenha(password));
               if (errorMsgEmail !== "") {
                 setErrorSenha(true);
               } else {
@@ -89,7 +106,13 @@ function LoginForm() {
           />
           <DialogContentText>
             Não possui uma conta? Crie uma agora clicando{" "}
-            <span className="linkButton" onClick={() => dispatch(change())}>
+            <span
+              className="linkButton"
+              onClick={() => {
+                dispatch(changeSignIn());
+                dispatch(change());
+              }}
+            >
               aqui
             </span>
           </DialogContentText>
