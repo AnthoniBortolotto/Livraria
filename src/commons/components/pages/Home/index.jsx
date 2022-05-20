@@ -9,7 +9,13 @@ import { domain } from "../../../helpers/utils/global";
 function Home({ itemList, authorPauloC }) {
   const dramaFilter = [];
   useEffect(() => {}, []);
-
+  const x = async function () {
+    const dados = await axios.get(
+      `http://localhost:3001/livros/get/isbn/1589796004`
+    );
+    console.log(dados.data[0]);
+  };
+  x();
   // itemList.map((item) => {
   //   item.genres?.map((genre) => {
   //     if ('drama' === genre.toLowerCase()){

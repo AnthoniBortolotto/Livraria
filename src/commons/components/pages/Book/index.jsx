@@ -1,9 +1,9 @@
-import React from 'react'
+import React, { useEffect } from "react";
 
-function Book() {
-  return (
-    <div>Book</div>
-  )
+export default function Book({ livro }) {
+  useEffect(() => {
+    console.log(livro);
+  }, []);
+
+  return <div>Book</div>;
 }
-
-export default Book
