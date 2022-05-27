@@ -26,10 +26,24 @@ export const getStaticPaths = async (ctx) => {
 
 export const getStaticProps = async ({ params }) => {
   let bookData = {};
+  const itemList = [];
+
   try {
     bookData = await axios.get(
       `http://localhost:3001/livros/get/isbn/${params.book}`
     );
+    const books = await axios.get(`${domain}/livros/get`);
+    for (let i = 600; i < 612; i++) {
+      const { img, author, genre, rating, title } = books.data[i];
+      itemList.push({
+        title,
+        creator: author,
+        imgUrl: img,
+        link: `/${author}/${title}`,
+        genres: genre,
+        rank: parseFloat(rating),
+      });
+    }
   } catch (err) {
     bookData = {
       data: "titulo",
@@ -37,10 +51,10 @@ export const getStaticProps = async ({ params }) => {
   }
 
   return {
-    props: { livroBook: bookData.data[0] },
+    props: { livroBook: bookData.data[0], carrousselItens: itemList },
   };
 };
 
-export default function PageBook({ livroBook }) {
-  return <Book livro={livroBook} />;
+export default function PageBook({ livroBook, carrousselItens }) {
+  return <Book livro={livroBook} carroussel={carrousselItens} />;
 }

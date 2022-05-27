@@ -1,14 +1,35 @@
-.CardMediaStyle {
+@import "../../../../styles/variables.scss";
+
+.container {
+    background-color: $color-grey;
+  .CardMediaStyle {
     width: 265px;
     height: 400px;
-}    
+    margin-top: 10px;
 
-.title {
+  }
+
+  .title {
     width: 800px;
     font-size: 16pt;
-}
+    margin-top: 20px;
+  }
 
-.desc{
-    width: 500px;
+  .desc {
     font-size: 12pt;
+    margin: 20px;
+  }
+
+  .tituloDesc {
+    margin: 20px;
+    margin-bottom: 0px;
+  }
+
+  .CardStyleImg{
+    margin-bottom: 20px;
+  }
+
+  .cardStyleDsc{
+    margin-top: 20px;
+  }
 }

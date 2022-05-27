@@ -20,13 +20,13 @@ export const getStaticProps = async (ctx) => {
   //  }
 
   const books = await axios.get(`${domain}/livros/get`);
-  books.data.map(({ img, author, genre, rating, title }, i) => {
+  books.data.map(({ img, author, genre, rating, title, isbn }, i) => {
     if (i > 78 && author.search(/[¿¥‡]+/) === -1) {
       itemList.push({
         title,
         creator: author,
         imgUrl: img,
-        link: `/${author}/${title}`,
+        link: `/${isbn}`,
         genres: genre,
         rank: parseFloat(rating),
       });
@@ -35,12 +35,12 @@ export const getStaticProps = async (ctx) => {
 
   const authorPauloC = [];
   const itensPauloC = await axios.get(`${domain}/livros/get/Paulo Coelho`);
-  itensPauloC.data.map(({ img, author, genre, rating, title }, i) => {
+  itensPauloC.data.map(({ img, author, genre, rating, title, isbn }, i) => {
     authorPauloC.push({
       title,
       creator: author,
       imgUrl: img,
-      link: `/${author}/${title}`,
+      link: `/${isbn}`,
       genres: genre,
       rank: parseFloat(rating),
     });
