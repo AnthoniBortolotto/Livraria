@@ -7,6 +7,7 @@ import Grid from "@mui/material/Grid";
 import StarRatings from "react-star-ratings";
 import styles from "./CardCaroussel.module.scss";
 import Button from "@mui/material/Button";
+import { treatTitle } from "../../../helpers/utils/functions";
 
 export default function CardCarousel({
   CardMediaTitle,
@@ -22,7 +23,7 @@ export default function CardCarousel({
     url.replace(" ", "%");
     window.location.href = link;
   }
-
+  const treatedTitle = treatTitle(ContentTitle);
   return (
     <Grid container item justifyContent="space-between">
       <Card className={styles.CardStyle} onClick={handlerCardClick}>
@@ -39,7 +40,7 @@ export default function CardCarousel({
                 variant="h6"
                 className={styles.ProdutoStyle}
               >
-                {ContentTitle}
+                {treatedTitle}
               </Typography>
             </div>
             <div className={styles.CardButtonContainer}>
@@ -61,7 +62,7 @@ export default function CardCarousel({
             </div>
             <div className={styles.CardButtonContainer}>
               <Button variant="outlined">
-                <Typography variant="p" component="p">
+                <Typography variant="p" component="h4">
                   {ContentText}
                 </Typography>
               </Button>

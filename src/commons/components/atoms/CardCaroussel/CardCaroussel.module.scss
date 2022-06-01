@@ -6,7 +6,10 @@
   width: 80%;
   &:hover {
     cursor: pointer;
-    text-decoration: underline;
+    
+    p, h3 {
+      text-decoration: underline;
+    }
   }
 }
 
