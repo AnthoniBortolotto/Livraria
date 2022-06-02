@@ -26,14 +26,21 @@ export const itemSettings = {
       settings: {
         slidesToShow: 3,
         slidesToScroll: 1,
-        initialSlide: 2,
       },
     },
     {
       breakpoint: 600,
       settings: {
-        arrows: false,
-        slidesToShow: 2,
+        arrows: true,
+        slidesToShow: 1,
+        slidesToScroll: 1,
+      },
+    },
+    {
+      breakpoint: 500,
+      settings: {
+        arrows: true,
+        slidesToShow: 1,
         slidesToScroll: 1,
       },
     },

@@ -1,5 +1,14 @@
+@import "../../../../styles/mixins.scss";
+
 .Button {
   max-width: 50px;
+  svg {
+    margin-left: 10px;
+    
+    @media all and (min-width: 400px){
+      margin-right: 0;
+    }
+  }
   &:hover {
     cursor: pointer;
     color: unset;

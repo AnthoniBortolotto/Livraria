@@ -38,28 +38,35 @@ export default function Book({ livro, carroussel }) {
             <Grid item>
               <Grid container direction="column" justifyContent="space-between">
                 <Grid item>
-                  <Typography variant="h4" className={styles.title}>
+                  <Typography variant="h1" className={styles.title}>
                     {livro.title}
                   </Typography>
                 </Grid>
                 <Grid item>
-                  <StarRatings
-                    rating={parseFloat(livro.rating)}
-                    numberOfStars={5}
-                    starRatedColor="orange"
-                    starDimension="90px"
-                  />
-                </Grid>
-                <Grid item>
-                  <Grid container>
-                    <Grid item xs={6}>
+                  <Grid container direction="row" justifyContent="space-evenly">
+                    <Grid item>
                       <Typography variant="h4" className={styles.rating}>
                         {livro.rating}
                       </Typography>
                     </Grid>
-                    <Grid item xs={6} className={styles.autor}>
-                      Autor: {livro.author}
+                    <Grid item>
+                      <StarRatings
+                        rating={parseFloat(livro.rating)}
+                        numberOfStars={5}
+                        starRatedColor="orange"
+                        starDimension="70px"
+                      />
                     </Grid>
+                  </Grid>
+                </Grid>
+                <Grid item>
+                  <Grid justifyContent="space-evenly" container>
+                    <Grid item xs={6} className={styles.autor}>
+                      <Typography variant="h6" marginLeft={14}>
+                        Autor: {livro.author}
+                      </Typography>
+                    </Grid>
+                    <Grid item xs={6}></Grid>
                   </Grid>
                 </Grid>
               </Grid>

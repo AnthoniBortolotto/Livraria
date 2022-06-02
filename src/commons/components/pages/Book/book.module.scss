@@ -11,8 +11,9 @@
 
   .title {
     width: 800px;
-    font-size: 16pt;
+    font-size: 24pt;
     margin-top: 20px;
+    text-align: center;
   }
 
   .desc {
@@ -32,4 +33,8 @@
   .cardStyleDsc{
     margin-top: 20px;
   }
+}
+
+.rating {
+  margin-top: 20px;
 }
