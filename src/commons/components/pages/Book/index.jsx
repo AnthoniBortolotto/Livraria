@@ -47,7 +47,7 @@ export default function Book({ livro, carroussel }) {
             justifyContent="flex-start"
             spacing={10}
           >
-            <Grid item>
+            <Grid item paddingBottom="24px">
               <CardContent>
                 <CardMedia
                   title={livro.title}
@@ -64,7 +64,7 @@ export default function Book({ livro, carroussel }) {
                   </Typography>
                 </Grid>
                 <Grid item>
-                  <Grid container direction="row" justifyContent="space-evenly">
+                  <Grid container direction="row" columnGap={10}>
                     <Grid item>
                       <Typography variant="h4" className={styles.rating}>
                         {livro.rating}
@@ -80,10 +80,10 @@ export default function Book({ livro, carroussel }) {
                     </Grid>
                   </Grid>
                 </Grid>
-                <Grid item>
+                <Grid item marginY={2}>
                   <Grid container>
-                    <Grid item xs={6} className={styles.autor}>
-                      <Typography variant="h6" marginLeft={14}>
+                    <Grid item className={styles.autor}>
+                      <Typography variant="h6">
                         Autor: {livro.author}
                       </Typography>
                     </Grid>
