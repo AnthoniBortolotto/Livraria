@@ -11,6 +11,7 @@ import styles from "./book.module.scss";
 import StarRatings from "react-star-ratings";
 import CarrousselItens from "../../organisms/CarousselItens";
 import CardComments from "../../molecules/CardComments";
+import AddReview from "../../molecules/AddReview";
 
 export default function Book({ livro, carroussel }) {
   /* const comments = [
@@ -129,6 +130,9 @@ export default function Book({ livro, carroussel }) {
           </Grid>
         </Card>
         <CarrousselItens items={carroussel} title="Veja Mais" />
+        <div>
+          <AddReview />
+        </div>
       </div>
     </section>
   );
