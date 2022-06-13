@@ -1,8 +1,15 @@
-import React from "react";
+import React, { useState } from "react";
+import FilterDrawer from "../../organisms/FilterDrawer";
 import styles from "./Discover.module.scss";
 
-function Discover() {
-  return <div>Discover</div>;
+function Discover({ itemList }) {
+  const [items, setItems] = useState(itemList);
+  return (
+    <>
+      <FilterDrawer items={items} setItems={setItems} />
+      <div>Discover</div>
+    </>
+  );
 }
 
 export default Discover;
