@@ -13,7 +13,7 @@ function Footer() {
         justifyContent: "center",
       }}
     >
-      <Typography align="center" variant="text">
+      <Typography alignItems="center" align="center" variant="text">
         Todos os direitos reservados
       </Typography>
     </Box>

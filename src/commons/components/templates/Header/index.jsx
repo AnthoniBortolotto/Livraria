@@ -10,6 +10,7 @@ import InputBase from "@mui/material/InputBase";
 import MenuItem from "@mui/material/MenuItem";
 import Menu from "@mui/material/Menu";
 import SearchIcon from "@mui/icons-material/Search";
+import HomeIcon from "@mui/icons-material/Home";
 import AccountCircle from "@mui/icons-material/AccountCircle";
 import Logo from "../../atoms/Logo";
 import MenuIcon from "@mui/icons-material/Menu";
@@ -18,6 +19,16 @@ import useMediaQuery from "@mui/material/useMediaQuery";
 import LoginForm from "../../organisms/LoginForm";
 import { useSelector, useDispatch } from "react-redux";
 import { change } from "../../../redux/loginFormSlice";
+import Drawer from "@mui/material/Drawer";
+import {
+  Divider,
+  List,
+  ListItem,
+  ListItemButton,
+  ListItemIcon,
+  ListItemText,
+} from "@mui/material";
+import Link from "next/link";
 
 const Search = styled("div")(({ theme }) => ({
   position: "relative",
@@ -107,34 +118,47 @@ function Header() {
 
   const mobileMenuId = "primary-search-account-menu-mobile";
   const renderMobileMenu = (
-    <Menu
-      anchorEl={mobileMoreAnchorEl}
-      anchorOrigin={{
-        vertical: "top",
-        horizontal: "right",
-      }}
-      id={mobileMenuId}
-      keepMounted
-      transformOrigin={{
-        vertical: "top",
-        horizontal: "right",
-      }}
-      open={isMobileMenuOpen}
+    <Drawer
+      anchor={"left"}
+      open={mobileMoreAnchorEl}
       onClose={handleMobileMenuClose}
     >
-      <MenuItem onClick={handleProfileMenuOpen}>
-        <IconButton
-          size="large"
-          aria-label="account of current user"
-          aria-controls="primary-search-account-menu"
-          aria-haspopup="true"
-          color="inherit"
-        >
-          <AccountCircle />
-        </IconButton>
-        <p>Profile</p>
-      </MenuItem>
-    </Menu>
+      <Box sx={{ width: 250 }} role="presentation">
+        <List onClick={handleMobileMenuClose}>
+          <ListItem disablePadding>
+            <ListItemButton>
+              <ListItemIcon>
+                <AccountCircle />
+              </ListItemIcon>
+              <ListItemText primary="Login" />
+            </ListItemButton>
+          </ListItem>
+        </List>
+        <Divider />
+        <List onClick={handleMobileMenuClose}>
+          <ListItem disablePadding>
+            <Link href="/" passHref>
+              <ListItemButton>
+                <ListItemIcon>
+                  <HomeIcon />
+                </ListItemIcon>
+                <ListItemText primary="Início" />
+              </ListItemButton>
+            </Link>
+          </ListItem>
+          <ListItem disablePadding>
+            <Link href="/descubra" passHref>
+              <ListItemButton>
+                <ListItemIcon>
+                  <SearchIcon />
+                </ListItemIcon>
+                <ListItemText primary="Descubra" />
+              </ListItemButton>
+            </Link>
+          </ListItem>
+        </List>
+      </Box>
+    </Drawer>
   );
   const isMobile = useMediaQuery(mobileScreen);
   const showLoginForm = useSelector(({ showLoginForm }) => showLoginForm.value);
@@ -147,7 +171,11 @@ function Header() {
             <Grid container>
               {isMobile && (
                 <Grid container item xs={2} md={0}>
-                  <MenuIcon sx={{ marginTop: "7px" }} fontSize="large" />
+                  <MenuIcon
+                    onClick={handleMobileMenuOpen}
+                    sx={{ marginTop: "7px" }}
+                    fontSize="large"
+                  />
                 </Grid>
               )}
               <Grid item xs={2.5} md={1} lg={0.75}>
@@ -173,7 +201,7 @@ function Header() {
                     <SearchIcon />
                   </SearchIconWrapper>
                   <StyledInputBase
-                    placeholder="Search…"
+                    placeholder="Pesquise por livros"
                     inputProps={{ "aria-label": "search" }}
                   />
                 </Search>
