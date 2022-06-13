@@ -122,11 +122,16 @@ function Header() {
       anchor={"left"}
       open={mobileMoreAnchorEl}
       onClose={handleMobileMenuClose}
+      PaperProps={{ style: { backgroundColor: "#f9a825" } }}
     >
       <Box sx={{ width: 250 }} role="presentation">
         <List onClick={handleMobileMenuClose}>
           <ListItem disablePadding>
-            <ListItemButton>
+            <ListItemButton
+              onClick={() => {
+                dispatch(change());
+              }}
+            >
               <ListItemIcon>
                 <AccountCircle />
               </ListItemIcon>
