@@ -7,6 +7,7 @@ import Grid from "@mui/material/Grid";
 import StarRatings from "react-star-ratings";
 import styles from "./CardCaroussel.module.scss";
 import Button from "@mui/material/Button";
+import Rating from "@mui/material/Rating";
 import { treatAuthor, treatTitle } from "../../../helpers/utils/functions";
 
 export default function CardCarousel({
@@ -54,12 +55,7 @@ export default function CardCarousel({
               </Typography>
             </div>
             <div className={styles.CardButtonContainer}>
-              <StarRatings
-                rating={rank}
-                numberOfStars={5}
-                starRatedColor="orange"
-                starDimension="15px"
-              />
+              <Rating defaultValue={rank} precision={0.1} />
             </div>
             <div className={styles.CardButtonContainer}>
               <Button variant="outlined">

@@ -19,15 +19,17 @@ import Checkbox from "@mui/material/Checkbox";
 import React, { useState } from "react";
 import styles from "./FilterDrawer.module.scss";
 import AccordionDrawer from "../../atoms/AccordionDrawer";
+import Rating from "@mui/material/Rating";
 
 function FilterDrawer({ items, setItems }) {
-  const [filters, setFilters] = useState([]);
-
-  function handlerFilter(filter) {
-    if (filters.includes(filter)) {
-      setFilters(filters.filter((item) => item !== filter));
+  const [filterGenres, setFilterGenres] = useState([]);
+  const [minRating, setMinRating] = useState(null);
+  const [maxRating, setMaxRating] = useState(null);
+  function handlerFilter(genre) {
+    if (filterGenres.includes(genre)) {
+      setFilterGenres(filterGenres.filter((item) => item !== genre));
     } else {
-      setFilters([...filters, filter]);
+      setFilterGenres([...filterGenres, genre]);
     }
   }
 
@@ -46,38 +48,52 @@ function FilterDrawer({ items, setItems }) {
     >
       <List>
         <AccordionDrawer title="Gêneros">
-          <FormControl sx={{ m: 3 }} component="fieldset" variant="standard">
-            <FormGroup>
-              <FormControlLabel
-                control={
-                  <Checkbox
-                    onChange={() => handlerFilter("Drama")}
-                    name="Drama"
-                  />
-                }
-                label="Drama"
-              />
-              <FormControlLabel
-                control={
-                  <Checkbox
-                    onChange={() => handlerFilter("Horror")}
-                    name="Horror"
-                  />
-                }
-                label="Terror"
-              />
-              <FormControlLabel
-                control={
-                  <Checkbox
-                    onChange={() => handlerFilter("Thriller")}
-                    name="Thriller"
-                  />
-                }
-                label="Suspense"
-              />
-            </FormGroup>
-          </FormControl>
+          <FormGroup>
+            <FormControlLabel
+              control={
+                <Checkbox
+                  onChange={() => handlerFilter("Drama")}
+                  name="Drama"
+                />
+              }
+              label="Drama"
+            />
+            <FormControlLabel
+              control={
+                <Checkbox
+                  onChange={() => handlerFilter("Horror")}
+                  name="Horror"
+                />
+              }
+              label="Terror"
+            />
+            <FormControlLabel
+              control={
+                <Checkbox
+                  onChange={() => handlerFilter("Thriller")}
+                  name="Thriller"
+                />
+              }
+              label="Suspense"
+            />
+          </FormGroup>
         </AccordionDrawer>
+        <Typography component="legend">Nota Mínima</Typography>
+        <Rating
+          value={minRating}
+          onChange={(event, newValue) => {
+            setMinRating(newValue);
+          }}
+          precision={0.5}
+        />
+        <Typography component="legend">Nota Máxima</Typography>
+        <Rating
+          precision={0.5}
+          value={maxRating}
+          onChange={(event, newValue) => {
+            setMaxRating(newValue);
+          }}
+        />
       </List>
     </Drawer>
   );
