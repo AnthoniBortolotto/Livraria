@@ -6,8 +6,6 @@ import { SingleBed } from "@mui/icons-material";
 import SignInForm from "../../organisms/SignUpForm";
 
 function Layout({ children }) {
-  //se quiser converta os states para redux
-
   return (
     <>
       <Header />

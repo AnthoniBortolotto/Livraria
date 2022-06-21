@@ -4,7 +4,6 @@ import Card from "@mui/material/Card";
 import CardMedia from "@mui/material/CardMedia";
 import CardContent from "@mui/material/CardContent";
 import Grid from "@mui/material/Grid";
-import StarRatings from "react-star-ratings";
 import styles from "./CardCaroussel.module.scss";
 import Button from "@mui/material/Button";
 import Rating from "@mui/material/Rating";

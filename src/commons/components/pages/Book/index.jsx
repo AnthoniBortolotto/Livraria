@@ -8,10 +8,10 @@ import {
 } from "@mui/material";
 import React, { useEffect } from "react";
 import styles from "./book.module.scss";
-import StarRatings from "react-star-ratings";
 import CarrousselItens from "../../organisms/CarousselItens";
 import CardComments from "../../molecules/CardComments";
 import AddReview from "../../molecules/AddReview";
+import StarRatings from "@mui/material/Rating";
 
 export default function Book({ livro, carroussel }) {
   /* const comments = [
@@ -73,10 +73,8 @@ export default function Book({ livro, carroussel }) {
                     </Grid>
                     <Grid item>
                       <StarRatings
-                        rating={parseFloat(livro.rating)}
-                        numberOfStars={5}
-                        starRatedColor="orange"
-                        starDimension="70px"
+                        defaultValue={parseFloat(livro.rating)}
+                        readOnly
                       />
                     </Grid>
                   </Grid>
