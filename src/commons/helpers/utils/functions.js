@@ -8,6 +8,7 @@ export function treatTitle(title, width) {
 }
 
 export function treatAuthor(author, width) {
+  return author;
   let treatedAuthor = author;
   if (treatedAuthor.length > 20) {
     treatedAuthor = treatedAuthor.substring(0, 20);
