@@ -120,7 +120,7 @@ function Header() {
   const renderMobileMenu = (
     <Drawer
       anchor={"left"}
-      open={mobileMoreAnchorEl}
+      open={mobileMoreAnchorEl === null ? false : mobileMoreAnchorEl}
       onClose={handleMobileMenuClose}
       PaperProps={{ style: { backgroundColor: "#f9a825" } }}
     >

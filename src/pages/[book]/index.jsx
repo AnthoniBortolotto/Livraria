@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import axios from "axios";
 import Book from "../../commons/components/pages/Book";
 import { domain } from "../../commons/helpers/utils/global";
@@ -27,11 +27,11 @@ export const getStaticProps = async ({ params }) => {
   let bookData = {};
   const itemList = [];
 
-  /* try {
-    bookData = await axios.get(
-      `http://localhost:3001/livros/get/isbn/${params.book}`
-    );
-    const books = await axios.get(`${domain}/livros/get`);
+  bookData = await axios.get(
+    `http://localhost:3001/livros/get/isbn/${params.book}`
+  );
+  bookData = await bookData.data[0];
+  /*  const books = await axios.get(`${domain}/livros/get`);
     for (let i = 600; i < 612; i++) {
       const { img, author, genre, rating, title } = books.data[i];
       itemList.push({
@@ -42,14 +42,13 @@ export const getStaticProps = async ({ params }) => {
         genres: genre,
         rank: parseFloat(rating),
       });
-    }
-  } catch (err) {
-    bookData = {
-      data: "titulo",
-    };
-  } */
+    } */
+
   return {
-    props: { livroBook: {}, carrousselItens: {} },
+    props: {
+      livroBook: bookData === undefined ? null : bookData,
+      carrousselItens: params.book === undefined ? null : params.book,
+    },
   };
 
   /* return {
@@ -414,5 +413,17 @@ export default function PageBook({ livroBook, carrousselItens }) {
       id: 60220,
     },
   ]);
-  return <Book livro={livro} carroussel={carousel} />;
+  const [isLoading, setIsLoading] = useState(true);
+  useEffect(() => {
+    console.log(livroBook);
+    if (livroBook !== null) {
+      setIsLoading(false);
+    }
+  }, []);
+
+  return isLoading ? (
+    <div>Carregando...</div>
+  ) : (
+    <Book livro={livroBook} carroussel={carousel} />
+  );
 }
