@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import axios from "axios";
-import Book from "../../commons/components/pages/Book";
-import { domain } from "../../commons/helpers/utils/global";
+import Book from "../../../commons/components/pages/Book";
+import { domain } from "../../../commons/helpers/utils/global";
 import { useState } from "react";
 
 // You should use getStaticPaths if you’re statically pre-rendering pages that use dynamic routes
@@ -57,25 +57,6 @@ export const getStaticProps = async ({ params }) => {
 };
 
 export default function PageBook({ livroBook, carrousselItens }) {
-  const [livro, setLivro] = useState([
-    {
-      author: "Richard P. Stanley",
-      bookformat: "Paperback",
-      desc: "This text is the first of a two-volume basic introduction to enumerative combinatorics at a level suitable for graduate students and research mathematicians. It concentrates on the theory and application of generating functions, a fundamental tool in enumerative combinatorics. The book covers those parts of enumerative combinatorics of greatest applicability to other areas of mathematics. The four chapters are devoted to an introduction to enumeration (suitable for advanced undergraduates), sieve methods (including the Principle of Inclusion-Exclusion), partially ordered sets, and rational generating functions. There are a large number of exercises, almost all with solutions, which greatly augment the text and provide entry into many areas not covered directly. Graduate students and research mathematicians who wish to apply combinatorics to their work should find this a useful reference.",
-      genre: "Science,Mathematics,Textbooks,Nonfiction",
-      img: "https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1389540867l/1186609.jpg",
-      isbn: "521663512",
-      isbn13: "9780000000000",
-      link: "https://goodreads.com/book/show/1186609.Cambridge_Studies_in_Advanced_Mathematics_Volume_49",
-      pages: 338,
-      rating: "4.3",
-      reviews: 2,
-      title:
-        "Cambridge Studies in Advanced Mathematics, Volume 49: Enumerative Combinatorics, Volume 1",
-      totalratings: 23,
-      id: 27158,
-    },
-  ]);
   const [carousel, setCarousel] = useState([
     {
       author: "Michael Schellhammer",
@@ -413,17 +394,13 @@ export default function PageBook({ livroBook, carrousselItens }) {
       id: 60220,
     },
   ]);
-  const [isLoading, setIsLoading] = useState(true);
   useEffect(() => {
     console.log(livroBook);
-    if (livroBook !== null) {
-      setIsLoading(false);
-    }
   }, []);
-
-  return isLoading ? (
+  return <Book livro={livroBook} carroussel={carousel} />;
+  /* return isLoading ? (
     <div>Carregando...</div>
   ) : (
     <Book livro={livroBook} carroussel={carousel} />
-  );
+  ); */
 }

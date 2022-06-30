@@ -25,7 +25,7 @@ export const getStaticProps = async (ctx) => {
       title,
       creator: author,
       imgUrl: img,
-      link: `/${isbn}`,
+      link: `/books/${isbn}`,
       genres: genre,
       rank: parseFloat(rating),
     });
