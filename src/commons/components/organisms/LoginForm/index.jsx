@@ -15,6 +15,8 @@ import {
 } from "../../../helpers/utils/formValidation";
 import axios from "axios";
 import { changeSignIn } from "../../../redux/signInFormSlice";
+import { useEffect } from "react";
+import { domain } from "../../../helpers/utils/global";
 
 function LoginForm() {
   const showLoginForm = useSelector(({ showLoginForm }) => showLoginForm.value);
@@ -25,22 +27,57 @@ function LoginForm() {
   const [errorSenha, setErrorSenha] = useState(false);
   const [errorMsgEmail, setErrorMsgEmail] = useState("");
   const [errorMsgSenha, setErrorMsgSenha] = useState("");
-  /*
-  const createUser = () => {
-    axios
-      .post("/user", {
-        nome: "Fred",
-        login: "Flintstone",
-        senha: "XVIDEOS",
-      })
-      .then(function (response) {
-        console.log(response);
-      })
-      .catch(function (error) {
-        console.log(error);
-      });
-  };
-*/
+
+  function handlerEmail(e) {
+    setEmail(e.target.value);
+  }
+
+  function handlerPassword(e) {
+    setPassword(e.target.value);
+  }
+
+  function checkSenha() {
+    setErrorMsgSenha(verificarSenha(password));
+    setErrorSenha(errorMsgSenha !== "");
+  }
+
+  function checkEmail() {
+    const msg = verificarEmail(email);
+    setErrorMsgEmail(msg);
+    setErrorEmail(errorMsgEmail !== "");
+  }
+  useEffect(() => {
+    checkEmail();
+  }, [email]);
+
+  useEffect(() => {
+    checkSenha();
+  }, [password]);
+
+  function login() {
+    checkEmail();
+    checkSenha();
+    if (!errorEmail && !errorSenha) {
+      console.log("entrou");
+      axios
+        .post(`${domain}/user/auth`, {
+          login: email,
+          senha: password,
+        })
+        .then((res) => {
+          window.localStorage.setItem("token", res.data.token);
+          dispatch(change());
+        })
+        .catch((err) => {
+          console.log(err);
+          if (err.response.status === 401) {
+            setErrorMsgEmail("Email ou senha incorretos");
+            setErrorEmail(true);
+          }
+        });
+    }
+  }
+
   return (
     <div style={{ maxWidth: "100vw" }}>
       <Dialog open={showLoginForm} onClose={() => dispatch(change())}>
@@ -48,24 +85,7 @@ function LoginForm() {
         <DialogContent>
           <TextField
             value={email}
-            onChange={(e) => {
-              setEmail(e.target.value);
-              setErrorMsgEmail(verificarEmail(email));
-              if (errorMsgEmail !== "") {
-                setErrorEmail(true);
-              } else {
-                setErrorEmail(false);
-              }
-            }}
-            onClick={() => {
-              setErrorMsgEmail(verificarEmail(email));
-              if (errorMsgEmail !== "") {
-                setErrorEmail(true);
-              } else {
-                setErrorEmail(false);
-              }
-            }}
-            autoFocus
+            onChange={handlerEmail}
             margin="dense"
             id="name"
             label="Email"
@@ -77,24 +97,7 @@ function LoginForm() {
           />
           <TextField
             value={password}
-            onChange={(e) => {
-              setPassword(e.target.value);
-              setErrorMsgSenha(verificarSenha(password));
-              if (errorMsgSenha !== "") {
-                setErrorSenha(true);
-              } else {
-                setErrorSenha(false);
-              }
-            }}
-            onClick={() => {
-              setErrorSenha(verificarSenha(password));
-              if (errorMsgEmail !== "") {
-                setErrorSenha(true);
-              } else {
-                setErrorSenha(true);
-              }
-            }}
-            autoFocus
+            onChange={handlerPassword}
             margin="dense"
             id="password"
             label="Senha"
@@ -118,8 +121,8 @@ function LoginForm() {
           </DialogContentText>
         </DialogContent>
         <DialogActions>
-          <Button onClick={() => dispatch(change())}>Cancel</Button>
-          <Button onClick={() => dispatch(change())}>Subscribe</Button>
+          <Button onClick={() => dispatch(change())}>Fechar</Button>
+          <Button onClick={() => login()}>Fazer login</Button>
         </DialogActions>
       </Dialog>
     </div>

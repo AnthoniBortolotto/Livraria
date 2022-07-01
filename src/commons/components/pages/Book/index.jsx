@@ -127,7 +127,7 @@ export default function Book({ livro, carroussel }) {
             </Grid>
           </Grid>
         </Card>
-        <CarrousselItens items={carroussel} title="Veja Mais" />
+       {/*  <CarrousselItens items={carroussel} title="Veja Mais" /> */}
         <div>
           <AddReview />
         </div>

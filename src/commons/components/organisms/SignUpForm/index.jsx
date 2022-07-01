@@ -39,26 +39,13 @@ function SignInForm() {
 
   function handlerNome(e) {
     setNome(e.target.value);
-    /*     setErrorMsgNome(verificarNome(nome));
-    if (errorMsgNome !== "") {
-      setErrorNome(true);
-    } else {
-      setErrorNome(false);
-    } */
   }
   function handlerEmail(e) {
     setEmail(e.target.value);
-    /*     setErrorMsgEmail(verificarEmail(email));
-    if (errorMsgEmail !== "") {
-      setErrorEmail(true);
-    } else {
-      setErrorEmail(false);
-    } */
   }
 
   function handlerPassword(e) {
     setPassword(e.target.value);
-    /*  */
   }
   function checkNome() {
     setErrorMsgNome(verificarNome(nome));
@@ -80,7 +67,6 @@ function SignInForm() {
   function checkEmail() {
     setErrorMsgEmail(verificarEmail(email));
     if (errorMsgEmail !== "") {
-      console.log("setado");
       setErrorEmail(true);
     } else {
       setErrorEmail(false);
@@ -90,7 +76,8 @@ function SignInForm() {
     checkEmail();
     checkSenha();
     checkNome();
-    if (errorMsgEmail === "" && errorMsgSenha === "" && errorNome === "") {
+    console.log("resultado", errorEmail, errorSenha, errorNome);
+    if (!errorEmail && !errorSenha && !errorNome) {
       console.log("chegou");
       axios
         .post(`${domain}/user/post`, {
