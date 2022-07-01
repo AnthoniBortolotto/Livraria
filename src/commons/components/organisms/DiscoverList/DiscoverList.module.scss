@@ -1,0 +1,21 @@
+@import "../../../../styles/mixins.scss";
+
+.container{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+@include breakpoint-up("md") {
+  .container {
+    gap: 20px;
+  }
+}
+
+
+.moreButton{
+    margin-right: 15%;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: center;
+}

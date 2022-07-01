@@ -31,6 +31,7 @@ function FilterDrawer({ items, setItems }) {
     } else {
       setFilterGenres([...filterGenres, genre]);
     }
+    console.log(filterGenres);
   }
 
   return (
