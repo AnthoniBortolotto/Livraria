@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import Dialog from "@mui/material/Dialog";
@@ -11,9 +11,11 @@ import { useSelector, useDispatch } from "react-redux";
 import { changeSignIn } from "../../../redux/signInFormSlice";
 import {
   verificarEmail,
+  verificarNome,
   verificarSenha,
 } from "../../../helpers/utils/formValidation";
 import axios from "axios";
+import { domain } from "../../../helpers/utils/global";
 
 function SignInForm() {
   const showSignInForm = useSelector(
@@ -27,20 +29,83 @@ function SignInForm() {
   const [errorSenha, setErrorSenha] = useState(false);
   const [errorMsgEmail, setErrorMsgEmail] = useState("");
   const [errorMsgSenha, setErrorMsgSenha] = useState("");
+  const [errorNome, setErrorNome] = useState(false);
+  const [errorMsgNome, setErrorMsgNome] = useState("");
+  useEffect(() => {
+    checkNome();
+    checkEmail();
+    checkSenha();
+  }, [email, password, nome]);
 
+  function handlerNome(e) {
+    setNome(e.target.value);
+    /*     setErrorMsgNome(verificarNome(nome));
+    if (errorMsgNome !== "") {
+      setErrorNome(true);
+    } else {
+      setErrorNome(false);
+    } */
+  }
+  function handlerEmail(e) {
+    setEmail(e.target.value);
+    /*     setErrorMsgEmail(verificarEmail(email));
+    if (errorMsgEmail !== "") {
+      setErrorEmail(true);
+    } else {
+      setErrorEmail(false);
+    } */
+  }
+
+  function handlerPassword(e) {
+    setPassword(e.target.value);
+    /*  */
+  }
+  function checkNome() {
+    setErrorMsgNome(verificarNome(nome));
+    if (errorMsgNome !== "") {
+      setErrorNome(true);
+    } else {
+      setErrorNome(false);
+    }
+  }
+  function checkSenha() {
+    setErrorMsgSenha(verificarSenha(password));
+    if (errorMsgSenha !== "") {
+      setErrorSenha(true);
+    } else {
+      setErrorSenha(false);
+    }
+  }
+
+  function checkEmail() {
+    setErrorMsgEmail(verificarEmail(email));
+    if (errorMsgEmail !== "") {
+      console.log("setado");
+      setErrorEmail(true);
+    } else {
+      setErrorEmail(false);
+    }
+  }
   const createUser = () => {
-    axios
-      .post("/user", {
-        nome: "Fred",
-        login: "Flintstone",
-        senha: "XVIDEOS",
-      })
-      .then(function (response) {
-        console.log(response);
-      })
-      .catch(function (error) {
-        console.log(error);
-      });
+    checkEmail();
+    checkSenha();
+    checkNome();
+    if (errorMsgEmail === "" && errorMsgSenha === "" && errorNome === "") {
+      console.log("chegou");
+      axios
+        .post(`${domain}/user/post`, {
+          nome: nome,
+          login: email,
+          senha: password,
+        })
+        .then(function (response) {
+          console.log(response);
+        })
+        .catch(function (error) {
+          console.log(error);
+        });
+      dispatch(changeSignIn());
+    }
   };
 
   return (
@@ -50,41 +115,23 @@ function SignInForm() {
         <DialogContent>
           <TextField
             value={nome}
-            onChange={(e) => {
-              setNome(e.target.value);
-            }}
-            autoFocus
+            onChange={handlerNome}
             margin="dense"
             id="name"
             label="Nome"
-            error={errorEmail}
-            helperText={errorMsgEmail}
+            error={errorNome}
+            helperText={errorMsgNome}
             type="nome"
             fullWidth
             variant="standard"
           />
           <TextField
             value={email}
-            onChange={(e) => {
-              setEmail(e.target.value);
-              setErrorMsgEmail(verificarEmail(email));
-              if (errorMsgEmail !== "") {
-                setErrorEmail(true);
-              } else {
-                setErrorEmail(false);
-              }
-            }}
-            onClick={() => {
-              setErrorMsgEmail(verificarEmail(email));
-              if (errorMsgEmail !== "") {
-                setErrorEmail(true);
-              } else {
-                setErrorEmail(false);
-              }
-            }}
-            autoFocus
+            onChange={handlerEmail}
+            //onClick={handlerNome}
+
             margin="dense"
-            id="name"
+            id="email"
             label="Email"
             error={errorEmail}
             helperText={errorMsgEmail}
@@ -94,24 +141,7 @@ function SignInForm() {
           />
           <TextField
             value={password}
-            onChange={(e) => {
-              setPassword(e.target.value);
-              setErrorMsgSenha(verificarSenha(password));
-              if (errorMsgSenha !== "") {
-                setErrorSenha(true);
-              } else {
-                setErrorSenha(false);
-              }
-            }}
-            onClick={() => {
-              setErrorSenha(verificarSenha(password));
-              if (errorMsgEmail !== "") {
-                setErrorSenha(true);
-              } else {
-                setErrorSenha(true);
-              }
-            }}
-            autoFocus
+            onChange={handlerPassword}
             margin="dense"
             id="password"
             label="Senha"
@@ -124,7 +154,7 @@ function SignInForm() {
         </DialogContent>
         <DialogActions>
           <Button onClick={() => dispatch(changeSignIn())}>Cancel</Button>
-          <Button onClick={() => dispatch(createUser())}>Create Account</Button>
+          <Button onClick={() => createUser()}>Create Account</Button>
         </DialogActions>
       </Dialog>
     </div>
