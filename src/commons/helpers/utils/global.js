@@ -42,6 +42,7 @@ export const itemSettings = {
         arrows: true,
         slidesToShow: 1,
         slidesToScroll: 1,
+        
       },
     },
   ],

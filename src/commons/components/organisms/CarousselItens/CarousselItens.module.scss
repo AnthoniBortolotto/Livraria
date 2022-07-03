@@ -1,8 +1,22 @@
 @import "../../../../styles/mixins.scss";
 
 .cardItem {
+    @include breakpoint-down("sm") {
+       div {
+        width: 100%;
+        justify-content: center;
+        a > div {
+            width: 320px;
+        }
+       } 
+    }   
+    
 }
-
+@include breakpoint-up("lg") {
+      .cardItem > div {
+        justify-content: center;
+      }  
+}
 .containerDesk {
     max-width: 360px;
     margin: auto;
