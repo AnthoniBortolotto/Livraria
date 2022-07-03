@@ -47,3 +47,21 @@ export const itemSettings = {
   ],
 };
 export const domain = "http://localhost:3001";
+
+export const displayItems = [
+  {
+    img: "campeoes_venda",
+    alt: "Clique aqui para acessar as ofertas dos campeões de venda",
+    link: "populares",
+  },
+  {
+    img: "desconto",
+    alt: "Clique aqui para acessar os descontos",
+    link: "descontos",
+  },
+  {
+    img: "melhor_leitura",
+    alt: "Clique aqui para acessar as melhores leituras",
+    link: "destaques",
+  },
+];

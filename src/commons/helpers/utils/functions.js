@@ -16,3 +16,8 @@ export function treatAuthor(author, width) {
   }
   return treatedAuthor;
 }
+
+export function scrollTo(id) {
+  const element = document.getElementById(id);
+  element.scrollIntoView({ behavior: "smooth" });
+}

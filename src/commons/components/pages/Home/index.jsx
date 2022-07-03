@@ -24,13 +24,13 @@ function Home({ itemList, authorPauloC }) {
       <section className="background-gray default-margin">
         <CarousselHomeDisplay />
       </section>
-      <section className="default-margin">
+      <section className="default-margin" id="populares">
         <CarousselItens items={itemList} title="Os mais populares" />
       </section>
-      <section className="background-yellow default-margin">
+      <section className="background-yellow default-margin" id="destaques">
         <CarousselItens items={itemList} title="Destaques" />
       </section>
-      <section className="background-gray default-margin">
+      <section className="background-gray default-margin" id="descontos">
         <CarousselItens items={itemList} title="Com desconto" />
       </section>
       <section className="background-yellow default-margin">

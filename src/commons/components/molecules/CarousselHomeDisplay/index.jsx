@@ -3,28 +3,12 @@ import useMediaQuery from "@mui/material/useMediaQuery";
 import { useRouter } from "next/router";
 import Caroussel from "../../atoms/Caroussel";
 import styles from "./CarousselHomeDisplay.module.scss";
-import { mobileScreen } from "../../../helpers/utils/global";
+import { displayItems, mobileScreen } from "../../../helpers/utils/global";
+import { scrollTo } from "../../../helpers/utils/functions";
 
-const items = [
-  {
-    img: "campeoes_venda",
-    alt: "Clique aqui para acessar as ofertas dos campeões de venda",
-    link: "https://www.saraiva.com.br/",
-  },
-  {
-    img: "desconto",
-    alt: "Clique aqui para acessar os descontos",
-    link: "https://www.saraiva.com.br/",
-  },
-  {
-    img: "dia_mundial_livro",
-    alt: "Clique aqui para acessar as ofertas do dia mundial do livro",
-    link: "https://www.saraiva.com.br/",
-  },
-];
+const items = displayItems;
 
 function CarousselHomeDisplay() {
-  const { push } = useRouter();
   const isMobile = useMediaQuery(mobileScreen);
   return (
     <>
@@ -34,7 +18,7 @@ function CarousselHomeDisplay() {
             <div
               className={styles.containerMob}
               key={alt}
-              onClick={() => push(link)}
+              onClick={() => scrollTo(link)}
             >
               <img src={`${img}-Mob.png`} alt={alt} />
             </div>
@@ -46,7 +30,7 @@ function CarousselHomeDisplay() {
             <div
               className={styles.containerDesk}
               key={alt}
-              onClick={() => push(link)}
+              onClick={() => scrollTo(link)}
             >
               <img src={`${img}.png`} alt={alt} />
             </div>

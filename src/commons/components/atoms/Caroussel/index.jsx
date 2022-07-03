@@ -5,11 +5,11 @@ const defaultSettings = {
   autoPlay: true,
   dots: true,
   infinite: true,
-  speed: 500,
+  speed: 1000,
   slidesToShow: 1,
   slidesToScroll: 1,
   arrows: true,
-  autoplaySpeed: 3000,
+  autoplaySpeed: 2000,
 };
 
 function Caroussel({ children, settings = defaultSettings }) {
