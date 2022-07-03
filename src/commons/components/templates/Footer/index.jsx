@@ -11,6 +11,7 @@ function Footer() {
         backgroundColor: "primary.main",
         display: "flex",
         justifyContent: "center",
+        alignItems: "center",
       }}
     >
       <Typography alignItems="center" align="center" variant="text">
