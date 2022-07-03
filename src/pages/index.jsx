@@ -48,10 +48,24 @@ export const getStaticProps = async (ctx) => {
     props: {
       authorPauloC,
       itemList,
+      itemListPopular: itemList,
+      itemListHighlights: itemList,
     },
   };
 };
 
-export default function Page({ itemList, authorPauloC }) {
-  return <Home itemList={itemList} authorPauloC={authorPauloC} />;
+export default function Page({
+  itemList,
+  itemListPopular,
+  itemListHighlights,
+  authorPauloC,
+}) {
+  return (
+    <Home
+      itemList={itemList}
+      itemListPopular={itemListPopular}
+      itemListHighlights={itemListHighlights}
+      authorPauloC={authorPauloC}
+    />
+  );
 }

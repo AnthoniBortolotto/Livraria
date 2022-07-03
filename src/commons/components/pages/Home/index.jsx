@@ -6,18 +6,8 @@ import CarousselHomeDisplay from "../../molecules/CarousselHomeDisplay";
 import axios from "axios";
 import { domain } from "../../../helpers/utils/global";
 
-function Home({ itemList, authorPauloC }) {
+function Home({ itemList, itemListPopular, itemListHighlights, authorPauloC }) {
   const dramaFilter = [];
-  // itemList.map((item) => {
-  //   item.genres?.map((genre) => {
-  //     if ('drama' === genre.toLowerCase()){
-  //       dramaFilter.push(item)
-  //       console.log(item)}
-
-  //   })
-
-  // })
-
   return (
     <>
       <HeadHtml />
@@ -25,10 +15,10 @@ function Home({ itemList, authorPauloC }) {
         <CarousselHomeDisplay />
       </section>
       <section className="default-margin" id="populares">
-        <CarousselItens items={itemList} title="Os mais populares" />
+        <CarousselItens items={itemListPopular} title="Os mais populares" />
       </section>
       <section className="background-yellow default-margin" id="destaques">
-        <CarousselItens items={itemList} title="Destaques" />
+        <CarousselItens items={itemListHighlights} title="Destaques" />
       </section>
       <section className="background-gray default-margin" id="descontos">
         <CarousselItens items={itemList} title="Com desconto" />
