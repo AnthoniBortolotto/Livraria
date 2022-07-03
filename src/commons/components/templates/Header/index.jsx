@@ -21,6 +21,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { change } from "../../../redux/loginFormSlice";
 import Drawer from "@mui/material/Drawer";
 import {
+  Button,
   Divider,
   List,
   ListItem,
@@ -28,6 +29,7 @@ import {
   ListItemIcon,
   ListItemText,
 } from "@mui/material";
+import styles from "./header.module.scss";
 import Link from "next/link";
 import { useRouter } from "next/router";
 
@@ -229,6 +231,11 @@ function Header() {
               {!isMobile && (
                 <Grid item md={6} container justifyContent="flex-end">
                   <Box sx={{ display: { xs: "none", md: "flex" } }}>
+                    <Link href="/descubra" passHref>
+                    <Button variant="contained" color="secondary" className={styles.buttonLink}>
+                      Descubra mais livros
+                    </Button>
+                    </Link>
                     <IconButton
                       size="large"
                       edge="end"
@@ -245,18 +252,6 @@ function Header() {
                   </Box>
                 </Grid>
               )}
-              {/*             <Grid item xs={4}>
-              <Box sx={{ display: { xs: "flex", md: "none" } }}>
-                <IconButton
-                  size="large"
-                  aria-label="show more"
-                  aria-controls={mobileMenuId}
-                  aria-haspopup="true"
-                  onClick={handleMobileMenuOpen}
-                  color="inherit"
-                />
-              </Box>
-            </Grid> */}
             </Grid>
           </Toolbar>
         </AppBar>
