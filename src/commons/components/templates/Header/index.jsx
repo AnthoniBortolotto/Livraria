@@ -29,6 +29,7 @@ import {
   ListItemText,
 } from "@mui/material";
 import Link from "next/link";
+import { useRouter } from "next/router";
 
 const Search = styled("div")(({ theme }) => ({
   position: "relative",
@@ -167,6 +168,8 @@ function Header() {
   );
   const isMobile = useMediaQuery(mobileScreen);
   const showLoginForm = useSelector(({ showLoginForm }) => showLoginForm.value);
+  const [search, setSearch] = useState("");
+  const { push } = useRouter();
   const dispatch = useDispatch();
   return (
     <>
@@ -206,6 +209,18 @@ function Header() {
                     <SearchIcon />
                   </SearchIconWrapper>
                   <StyledInputBase
+                    onKeyDownCapture={(e) => {
+                      if (e.key === "Enter") {
+                        push({
+                          pathname: '/descubra',
+                          query: { search: search },
+                      })
+                      }
+                    }}
+                    value={search}
+                    onChange={(e) => {
+                      setSearch(e.target.value);
+                    }}
                     placeholder="Pesquise por livros"
                     inputProps={{ "aria-label": "search" }}
                   />

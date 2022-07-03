@@ -46,6 +46,7 @@ function FilterDrawer({ items, setItems }) {
       }}
       variant="permanent"
       anchor="left"
+      
     >
       <List>
         <AccordionDrawer title="Gêneros">
