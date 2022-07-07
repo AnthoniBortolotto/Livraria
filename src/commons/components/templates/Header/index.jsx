@@ -32,6 +32,8 @@ import {
 import styles from "./header.module.scss";
 import Link from "next/link";
 import { useRouter } from "next/router";
+import { useEffect } from "react";
+import { checkLogin } from "../../../helpers/utils/userValidation";
 
 const Search = styled("div")(({ theme }) => ({
   position: "relative",
@@ -173,6 +175,12 @@ function Header() {
   const [search, setSearch] = useState("");
   const { push } = useRouter();
   const dispatch = useDispatch();
+  const [isLogged, setIsLogged] = useState(false);
+
+  useEffect(() => {
+    setIsLogged(checkLogin());
+  }, []);
+
   return (
     <>
       <Box sx={{ flexGrow: 1, position: "relative", zIndex: 1 }}>
@@ -240,19 +248,25 @@ function Header() {
                         Descubra mais livros
                       </Button>
                     </Link>
-                    <IconButton
-                      size="large"
-                      edge="end"
-                      aria-label="account of current user"
-                      aria-controls={menuId}
-                      aria-haspopup="true"
-                      onClick={() => {
-                        dispatch(change());
-                      }}
-                      color="inherit"
-                    >
-                      <AccountCircle />
-                    </IconButton>
+                    {isLogged ? (
+                      <Typography className={styles.welcomeMessage}>
+                        Bem vindo
+                      </Typography>
+                    ) : (
+                      <IconButton
+                        size="large"
+                        edge="end"
+                        aria-label="account of current user"
+                        aria-controls={menuId}
+                        aria-haspopup="true"
+                        onClick={() => {
+                          dispatch(change());
+                        }}
+                        color="inherit"
+                      >
+                        <AccountCircle />
+                      </IconButton>
+                    )}
                   </Box>
                 </Grid>
               )}
