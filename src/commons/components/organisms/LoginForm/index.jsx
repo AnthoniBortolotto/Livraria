@@ -67,6 +67,7 @@ function LoginForm() {
         .then((res) => {
           window.localStorage.setItem("token", res.data.token);
           dispatch(change());
+          window.location.reload();
         })
         .catch((err) => {
           console.log(err);

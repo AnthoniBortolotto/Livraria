@@ -3,3 +3,7 @@ export function checkLogin() {
     return true;
   }
 }
+
+export function logout() {
+  window.localStorage.removeItem("token");
+}

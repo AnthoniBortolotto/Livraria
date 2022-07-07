@@ -12,6 +12,7 @@ import Menu from "@mui/material/Menu";
 import SearchIcon from "@mui/icons-material/Search";
 import HomeIcon from "@mui/icons-material/Home";
 import AccountCircle from "@mui/icons-material/AccountCircle";
+import ExitToAppIcon from "@mui/icons-material/ExitToApp";
 import Logo from "../../atoms/Logo";
 import MenuIcon from "@mui/icons-material/Menu";
 import { mobileScreen } from "../../../helpers/utils/global";
@@ -33,7 +34,7 @@ import styles from "./header.module.scss";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { useEffect } from "react";
-import { checkLogin } from "../../../helpers/utils/userValidation";
+import { checkLogin, logout } from "../../../helpers/utils/userValidation";
 
 const Search = styled("div")(({ theme }) => ({
   position: "relative",
@@ -81,7 +82,11 @@ function Header() {
 
   const isMenuOpen = Boolean(anchorEl);
   const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
+  const [isLogged, setIsLogged] = useState(false);
 
+  useEffect(() => {
+    setIsLogged(checkLogin());
+  }, []);
   const handleProfileMenuOpen = (event) => {
     setAnchorEl(event.currentTarget);
   };
@@ -132,16 +137,30 @@ function Header() {
       <Box sx={{ width: 250 }} role="presentation">
         <List onClick={handleMobileMenuClose}>
           <ListItem disablePadding>
-            <ListItemButton
-              onClick={() => {
-                dispatch(change());
-              }}
-            >
-              <ListItemIcon>
-                <AccountCircle />
-              </ListItemIcon>
-              <ListItemText primary="Login" />
-            </ListItemButton>
+            {isLogged ? (
+              <ListItemButton
+                onClick={() => {
+                  logout();
+                  setIsLogged(false);
+                }}
+              >
+                <ListItemIcon>
+                  <ExitToAppIcon />
+                </ListItemIcon>
+                <ListItemText primary="Sair" />
+              </ListItemButton>
+            ) : (
+              <ListItemButton
+                onClick={() => {
+                  dispatch(change());
+                }}
+              >
+                <ListItemIcon>
+                  <AccountCircle />
+                </ListItemIcon>
+                <ListItemText primary="Login" />
+              </ListItemButton>
+            )}
           </ListItem>
         </List>
         <Divider />
@@ -175,11 +194,6 @@ function Header() {
   const [search, setSearch] = useState("");
   const { push } = useRouter();
   const dispatch = useDispatch();
-  const [isLogged, setIsLogged] = useState(false);
-
-  useEffect(() => {
-    setIsLogged(checkLogin());
-  }, []);
 
   return (
     <>
@@ -249,9 +263,20 @@ function Header() {
                       </Button>
                     </Link>
                     {isLogged ? (
-                      <Typography className={styles.welcomeMessage}>
-                        Bem vindo
-                      </Typography>
+                      <IconButton
+                        size="large"
+                        edge="end"
+                        aria-label="account of current user"
+                        aria-controls={menuId}
+                        aria-haspopup="true"
+                        onClick={() => {
+                          logout();
+                          setIsLogged(false);
+                        }}
+                        color="inherit"
+                      >
+                        <ExitToAppIcon />
+                      </IconButton>
                     ) : (
                       <IconButton
                         size="large"
