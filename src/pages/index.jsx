@@ -1,8 +1,5 @@
 import Home from "../commons/components/pages/Home";
-import axios from "axios";
-import { domain } from "../commons/helpers/utils/global";
 import { getAllBooks, joinedBooks } from "../commons/helpers/utils/functions";
-import { useEffect } from "react";
 
 export const getStaticProps = async (ctx) => {
   const [itemList, authorPauloC, popular, highlights] = await getAllBooks();
@@ -22,7 +19,6 @@ export default function Page({
   itemListHighlights,
   authorPauloC,
 }) {
-  
   return (
     <Home
       itemList={itemList}

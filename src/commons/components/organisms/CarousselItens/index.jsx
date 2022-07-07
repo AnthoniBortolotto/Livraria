@@ -15,7 +15,8 @@ function CarousselItens({ items, title }) {
       <Caroussel settings={itemSettings}>
         {items.map(
           ({ title, imgUrl, link, genres, creator, rank }, index) =>
-            index < 12 && (
+            index < 12 &&
+            link !== "/books/null" && (
               <div className={styles.cardItem} key={index}>
                 <CardCarousel
                   CardMediaTitle={creator}

@@ -1,11 +1,9 @@
-import {
-  Button,
-  Card,
-  CardContent,
-  CardMedia,
-  Grid,
-  Typography,
-} from "@mui/material";
+import Button from "@mui/material/Button";
+import Card from "@mui/material/Card";
+import CardContent from "@mui/material/CardContent";
+import CardMedia from "@mui/material/CardMedia";
+import Grid from "@mui/material/Grid";
+import Typography from "@mui/material/Typography";
 import React, { useEffect } from "react";
 import styles from "./book.module.scss";
 import CarrousselItens from "../../organisms/CarousselItens";
@@ -27,7 +25,9 @@ export default function Book({ livro, carroussel }) {
 
   return (
     <>
-      <HeadHtml title={`Livraria - ${livro.title}`} />
+      <HeadHtml
+        title={`Livraria - ${livro.title ? livro.title : "Sem titulo"}`}
+      />
       <section className={styles.container}>
         <div className={`default-margin containerDesk`}>
           <Card className={styles.CardStyleImg}>

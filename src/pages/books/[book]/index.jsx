@@ -11,11 +11,13 @@ export const getStaticPaths = async (ctx) => {
   const paths = [];
 
   books.map(({ img, author, genre, rating, title, isbn }, i) => {
-    paths.push({
-      params: {
-        book: `${isbn}`,
-      },
-    });
+    if (isbn && isbn != null) {
+      paths.push({
+        params: {
+          book: `${isbn}`,
+        },
+      });
+    }
   });
 
   return {

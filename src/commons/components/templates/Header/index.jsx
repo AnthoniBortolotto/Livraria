@@ -175,10 +175,7 @@ function Header() {
   const dispatch = useDispatch();
   return (
     <>
-      <Box sx={{ flexGrow: 1,
-        position: 'relative',
-        zIndex: 1,
-      }}>
+      <Box sx={{ flexGrow: 1, position: "relative", zIndex: 1 }}>
         <AppBar position="static">
           <Toolbar className="container">
             <Grid container>
@@ -217,9 +214,9 @@ function Header() {
                     onKeyDownCapture={(e) => {
                       if (e.key === "Enter") {
                         push({
-                          pathname: '/descubra',
+                          pathname: "/descubra",
                           query: { search: search },
-                      })
+                        });
                       }
                     }}
                     value={search}
@@ -235,9 +232,13 @@ function Header() {
                 <Grid item md={6} container justifyContent="flex-end">
                   <Box sx={{ display: { xs: "none", md: "flex" } }}>
                     <Link href="/descubra" passHref>
-                    <Button variant="contained" color="secondary" className={styles.buttonLink}>
-                      Descubra mais livros
-                    </Button>
+                      <Button
+                        variant="contained"
+                        color="secondary"
+                        className={styles.buttonLink}
+                      >
+                        Descubra mais livros
+                      </Button>
                     </Link>
                     <IconButton
                       size="large"
