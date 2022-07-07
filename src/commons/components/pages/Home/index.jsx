@@ -7,7 +7,6 @@ import axios from "axios";
 import { domain } from "../../../helpers/utils/global";
 
 function Home({ itemList, itemListPopular, itemListHighlights, authorPauloC }) {
-  const dramaFilter = [];
   return (
     <>
       <HeadHtml />
