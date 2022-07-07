@@ -21,3 +21,14 @@ export function scrollTo(id) {
   const element = document.getElementById(id);
   element.scrollIntoView({ behavior: "smooth" });
 }
+
+export function searchDescubra(search, items) {
+  const results =[]
+  items.map((item, index) => {
+    if (item.title.toLowerCase().includes(search.toLowerCase()) || item.creator.toLowerCase().includes(search.toLowerCase()) || item.genres.toLowerCase().includes(search.toLowerCase())) {
+      results.push(item);
+    }
+    });
+
+  return results;
+}

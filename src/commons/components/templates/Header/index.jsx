@@ -175,7 +175,10 @@ function Header() {
   const dispatch = useDispatch();
   return (
     <>
-      <Box sx={{ flexGrow: 1 }}>
+      <Box sx={{ flexGrow: 1,
+        position: 'relative',
+        zIndex: 1,
+      }}>
         <AppBar position="static">
           <Toolbar className="container">
             <Grid container>
