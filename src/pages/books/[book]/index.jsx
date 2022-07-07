@@ -3,13 +3,14 @@ import axios from "axios";
 import Book from "../../../commons/components/pages/Book";
 import { domain } from "../../../commons/helpers/utils/global";
 import { useState } from "react";
+import { joinedBooks } from "../../../commons/helpers/utils/functions";
 
 // You should use getStaticPaths if you’re statically pre-rendering pages that use dynamic routes
 export const getStaticPaths = async (ctx) => {
-  const books = await axios.get(`${domain}/livros/get`);
+  const books = await joinedBooks();
   const paths = [];
 
-  books.data.map(({ img, author, genre, rating, title, isbn }, i) => {
+  books.map(({ img, author, genre, rating, title, isbn }, i) => {
     paths.push({
       params: {
         book: `${isbn}`,
@@ -31,29 +32,12 @@ export const getStaticProps = async ({ params }) => {
     `http://localhost:3001/livros/get/isbn/${params.book}`
   );
   bookData = await bookData.data[0];
-  /*  const books = await axios.get(`${domain}/livros/get`);
-    for (let i = 600; i < 612; i++) {
-      const { img, author, genre, rating, title } = books.data[i];
-      itemList.push({
-        title,
-        creator: author,
-        imgUrl: img,
-        link: `/${author}/${title}`,
-        genres: genre,
-        rank: parseFloat(rating),
-      });
-    } */
-
   return {
     props: {
       livroBook: bookData === undefined ? null : bookData,
       carrousselItens: params.book === undefined ? null : params.book,
     },
   };
-
-  /* return {
-    props: { livroBook: bookData.data[0], carrousselItens: itemList },
-  }; */
 };
 
 export default function PageBook({ livroBook, carrousselItens }) {
@@ -398,9 +382,4 @@ export default function PageBook({ livroBook, carrousselItens }) {
     console.log(livroBook);
   }, []);
   return <Book livro={livroBook} carroussel={carousel} />;
-  /* return isLoading ? (
-    <div>Carregando...</div>
-  ) : (
-    <Book livro={livroBook} carroussel={carousel} />
-  ); */
 }

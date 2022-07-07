@@ -14,8 +14,9 @@ export const getStaticProps = async ({ params }) => {
       creator: author,
       imgUrl: img,
       link: `/books/${isbn}`,
-      genres: genre == null ? 'Unclassified' : genre,
+      genres: genre == null ? "Unclassified" : genre,
       rank: parseFloat(rating),
+      isbn: isbn,
     });
   });
 
@@ -27,14 +28,7 @@ export const getStaticProps = async ({ params }) => {
 };
 
 function Page({ itemList }) {
-
-
-
   return <Discover itemList={itemList} />;
 }
-
-
-
-
 
 export default Page;

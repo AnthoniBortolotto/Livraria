@@ -1,10 +1,10 @@
 import React from "react";
 import Head from "next/head";
 
-function HeadHtml() {
+function HeadHtml({title = "Home"}) {
   return (
     <Head>
-      <title>Home</title>
+      <title>{title}</title>
     </Head>
   );
 }

@@ -60,6 +60,7 @@ export async function getAllBooks() {
       link: `/books/${isbn}`,
       genres: genre,
       rank: parseFloat(rating),
+      isbn: isbn,
     });
   });
 
@@ -71,6 +72,7 @@ export async function getAllBooks() {
       link: `/books/${isbn}`,
       genres: genre,
       rank: parseFloat(rating),
+      isbn: isbn,
     });
   });
 
@@ -82,6 +84,7 @@ export async function getAllBooks() {
       link: `/books/${isbn}`,
       genres: genre,
       rank: parseFloat(rating),
+      isbn: isbn,
     });
   });
 
@@ -93,6 +96,7 @@ export async function getAllBooks() {
       link: `/books/${isbn}`,
       genres: genre,
       rank: parseFloat(rating),
+      isbn: isbn,
     });
   });
 
