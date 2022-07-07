@@ -16,13 +16,14 @@ import FormGroup from "@mui/material/FormGroup";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import FormHelperText from "@mui/material/FormHelperText";
 import Checkbox from "@mui/material/Checkbox";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styles from "./FilterDrawer.module.scss";
 import AccordionDrawer from "../../atoms/AccordionDrawer";
 import Rating from "@mui/material/Rating";
 
 function FilterDrawer({ items, setItems }) {
   const [filterGenres, setFilterGenres] = useState([]);
+  const [defaultBooks, setdefaultBooks] = useState(items);
   const [minRating, setMinRating] = useState(null);
   const [maxRating, setMaxRating] = useState(null);
   function handlerFilter(genre) {
@@ -32,7 +33,35 @@ function FilterDrawer({ items, setItems }) {
       setFilterGenres([...filterGenres, genre]);
     }
     console.log(filterGenres);
+
   }
+  useEffect(() => {
+    
+    const filterItems = []
+
+    if(filterGenres.length > 0) {
+
+     items.map((item)=> {
+
+       for(let i= 0; i < filterGenres.length; i++) {
+         if(item.genres.toLowerCase().includes(filterGenres[i].toLowerCase())){
+           item.genre = filterGenres[i];
+           filterItems.push(item);
+           break
+         }        
+       }
+     })
+
+     setItems(filterItems);
+  } else {
+    setItems(defaultBooks);
+  }
+    
+   
+
+  }, [filterGenres])
+  
+
 
   return (
     <Drawer
@@ -42,13 +71,18 @@ function FilterDrawer({ items, setItems }) {
         "& .MuiDrawer-paper": {
           width: 240,
           boxSizing: "border-box",
+          zIndex: 0,
         },
+        
       }}
       variant="permanent"
       anchor="left"
       
     >
-      <List>
+      <List
+      sx={{
+        top: 55,
+      }}>
         <AccordionDrawer title="Gêneros">
           <FormGroup>
             <FormControlLabel
@@ -59,6 +93,33 @@ function FilterDrawer({ items, setItems }) {
                 />
               }
               label="Drama"
+            />
+            <FormControlLabel
+              control={
+                <Checkbox
+                  onChange={() => handlerFilter("Sports")}
+                  name="Sports"
+                />
+              }
+              label="Esportes"
+            />
+            <FormControlLabel
+              control={
+                <Checkbox
+                  onChange={() => handlerFilter("Romance")}
+                  name="Romance"
+                />
+              }
+              label="Romance"
+            />
+            <FormControlLabel
+              control={
+                <Checkbox
+                  onChange={() => handlerFilter("Science")}
+                  name="Science"
+                />
+              }
+              label="Ciência"
             />
             <FormControlLabel
               control={
@@ -80,7 +141,7 @@ function FilterDrawer({ items, setItems }) {
             />
           </FormGroup>
         </AccordionDrawer>
-        <Typography component="legend">Nota Mínima</Typography>
+        {/* <Typography component="legend">Nota Mínima</Typography>
         <Rating
           value={minRating}
           onChange={(event, newValue) => {
@@ -95,7 +156,7 @@ function FilterDrawer({ items, setItems }) {
           onChange={(event, newValue) => {
             setMaxRating(newValue);
           }}
-        />
+        /> */}
       </List>
     </Drawer>
   );

@@ -7,7 +7,12 @@ import React from "react";
 
 function AccordionDrawer({ children, title }) {
   return (
-    <Accordion defaultExpanded>
+    <Accordion defaultExpanded
+    sx={
+      {
+        
+      }
+    }>
       <AccordionSummary
         expandIcon={<ExpandMoreIcon />}
         aria-controls="panel1a-content"
