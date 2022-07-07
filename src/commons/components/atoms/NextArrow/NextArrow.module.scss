@@ -1,7 +1,12 @@
+@import "../../../../styles/mixins.scss";
+
 .Button {
   max-width: 50px;
   svg {
     margin-left: -50px;
+    @include  breakpoint-up("xl") {
+      margin-left: -5px;
+    }
   }
 
   &::before {
