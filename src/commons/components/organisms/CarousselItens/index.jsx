@@ -9,7 +9,12 @@ import Typography from "@mui/material/Typography";
 function CarousselItens({ items, title }) {
   return (
     <div className={styles.containerDesk}>
-      <Typography marginY={5} variant="h2" color="initial">
+      <Typography
+        marginY={5}
+        variant="h2"
+        color="initial"
+        className={styles.title}
+      >
         {title}
       </Typography>
       <Caroussel settings={itemSettings}>

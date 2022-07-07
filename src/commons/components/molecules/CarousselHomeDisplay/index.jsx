@@ -13,7 +13,7 @@ function CarousselHomeDisplay() {
   return (
     <>
       {isMobile ? (
-        <Caroussel>
+        <Caroussel autoPlay>
           {items.map(({ alt, link, img }) => (
             <div
               className={styles.containerMob}

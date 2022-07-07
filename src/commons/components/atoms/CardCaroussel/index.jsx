@@ -9,6 +9,7 @@ import Button from "@mui/material/Button";
 import Rating from "@mui/material/Rating";
 import { treatAuthor, treatTitle } from "../../../helpers/utils/functions";
 import Link from "next/link";
+import { useState } from "react";
 
 export default function CardCarousel({
   CardMediaTitle,
@@ -19,8 +20,10 @@ export default function CardCarousel({
   link,
   rank,
 }) {
-  const treatedTitle = treatTitle(ContentTitle);
-  const treatedAuthor = treatAuthor(CardMediaTitle);
+  const [treatedTitle, setTreatedTitle] = useState(treatTitle(ContentTitle));
+  const [treatedAuthor, setTreatedAuthor] = useState(
+    treatAuthor(CardMediaTitle)
+  );
   return (
     <Grid container item justifyContent="space-between">
       <Link href={link} passHref>

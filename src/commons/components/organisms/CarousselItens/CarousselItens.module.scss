@@ -22,3 +22,9 @@
     margin: auto;
     @include container;
 }
+
+.title {
+    @include breakpoint-down("sm") {
+        padding: 0 33px;
+    }
+}
