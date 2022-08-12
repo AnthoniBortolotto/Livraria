@@ -20,7 +20,7 @@ function DiscoverList({ items }) {
                   link={link}
                   genres={genres}
                   rank={rank}
-                  ContentText={"Veja mais"}
+                  ContentText={"View More"}
                 />
               </div>
             )
@@ -28,7 +28,7 @@ function DiscoverList({ items }) {
       </div>
       <div className={styles.moreButton}>
         <Button variant="contained" onClick={() => setMaxCard(maxCard + 30)}>
-          Ver Mais
+          Show more
         </Button>
       </div>
     </>

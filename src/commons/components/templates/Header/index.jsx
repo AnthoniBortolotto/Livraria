@@ -137,41 +137,12 @@ function Header() {
       <Box sx={{ width: 250 }} role="presentation">
         <List onClick={handleMobileMenuClose}>
           <ListItem disablePadding>
-            {isLogged ? (
-              <ListItemButton
-                onClick={() => {
-                  logout();
-                  setIsLogged(false);
-                }}
-              >
-                <ListItemIcon>
-                  <ExitToAppIcon />
-                </ListItemIcon>
-                <ListItemText primary="Sair" />
-              </ListItemButton>
-            ) : (
-              <ListItemButton
-                onClick={() => {
-                  dispatch(change());
-                }}
-              >
-                <ListItemIcon>
-                  <AccountCircle />
-                </ListItemIcon>
-                <ListItemText primary="Login" />
-              </ListItemButton>
-            )}
-          </ListItem>
-        </List>
-        <Divider />
-        <List onClick={handleMobileMenuClose}>
-          <ListItem disablePadding>
             <Link href="/" passHref>
               <ListItemButton>
                 <ListItemIcon>
                   <HomeIcon />
                 </ListItemIcon>
-                <ListItemText primary="Início" />
+                <ListItemText primary="Home" />
               </ListItemButton>
             </Link>
           </ListItem>
@@ -181,7 +152,7 @@ function Header() {
                 <ListItemIcon>
                   <SearchIcon />
                 </ListItemIcon>
-                <ListItemText primary="Descubra" />
+                <ListItemText primary="Discover Books" />
               </ListItemButton>
             </Link>
           </ListItem>
@@ -223,7 +194,7 @@ function Header() {
                       marginTop: "10px",
                     }}
                   >
-                    Livraria
+                    Booker
                   </Typography>
                 </Grid>
               )}
@@ -245,7 +216,7 @@ function Header() {
                     onChange={(e) => {
                       setSearch(e.target.value);
                     }}
-                    placeholder="Pesquise por livros"
+                    placeholder="Search for books"
                     inputProps={{ "aria-label": "search" }}
                   />
                 </Search>
@@ -259,39 +230,9 @@ function Header() {
                         color="secondary"
                         className={styles.buttonLink}
                       >
-                        Descubra mais livros
+                        Discover more books
                       </Button>
                     </Link>
-                    {isLogged ? (
-                      <IconButton
-                        size="large"
-                        edge="end"
-                        aria-label="account of current user"
-                        aria-controls={menuId}
-                        aria-haspopup="true"
-                        onClick={() => {
-                          logout();
-                          setIsLogged(false);
-                        }}
-                        color="inherit"
-                      >
-                        <ExitToAppIcon />
-                      </IconButton>
-                    ) : (
-                      <IconButton
-                        size="large"
-                        edge="end"
-                        aria-label="account of current user"
-                        aria-controls={menuId}
-                        aria-haspopup="true"
-                        onClick={() => {
-                          dispatch(change());
-                        }}
-                        color="inherit"
-                      >
-                        <AccountCircle />
-                      </IconButton>
-                    )}
                   </Box>
                 </Grid>
               )}
@@ -301,7 +242,6 @@ function Header() {
         {renderMobileMenu}
         {renderMenu}
       </Box>
-      <LoginForm />
     </>
   );
 }

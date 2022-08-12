@@ -27,4 +27,7 @@
     @include breakpoint-down("sm") {
         padding: 0 33px;
     }
+    @include breakpoint-up("xl") {
+        padding-left: 24px;
+    }
 }

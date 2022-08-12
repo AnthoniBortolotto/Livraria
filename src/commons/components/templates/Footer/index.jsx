@@ -15,7 +15,7 @@ function Footer() {
       }}
     >
       <Typography alignItems="center" align="center" variant="text">
-        Todos os direitos reservados
+        All rights reserved
       </Typography>
     </Box>
   );

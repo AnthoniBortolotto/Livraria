@@ -54,6 +54,13 @@ function LoginForm() {
     checkSenha();
   }, [password]);
 
+  useEffect(() => {
+    setErrorMsgEmail("");
+    setErrorEmail(false);
+    setErrorMsgSenha("");
+    setErrorSenha(false);
+  }, []);
+
   function login() {
     checkEmail();
     checkSenha();

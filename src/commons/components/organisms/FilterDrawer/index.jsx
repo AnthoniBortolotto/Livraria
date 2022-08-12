@@ -33,35 +33,28 @@ function FilterDrawer({ items, setItems }) {
       setFilterGenres([...filterGenres, genre]);
     }
     console.log(filterGenres);
-
   }
   useEffect(() => {
-    
-    const filterItems = []
+    const filterItems = [];
 
-    if(filterGenres.length > 0) {
+    if (filterGenres.length > 0) {
+      items.map((item) => {
+        for (let i = 0; i < filterGenres.length; i++) {
+          if (
+            item.genres.toLowerCase().includes(filterGenres[i].toLowerCase())
+          ) {
+            item.genre = filterGenres[i];
+            filterItems.push(item);
+            break;
+          }
+        }
+      });
 
-     items.map((item)=> {
-
-       for(let i= 0; i < filterGenres.length; i++) {
-         if(item.genres.toLowerCase().includes(filterGenres[i].toLowerCase())){
-           item.genre = filterGenres[i];
-           filterItems.push(item);
-           break
-         }        
-       }
-     })
-
-     setItems(filterItems);
-  } else {
-    setItems(defaultBooks);
-  }
-    
-   
-
-  }, [filterGenres])
-  
-
+      setItems(filterItems);
+    } else {
+      setItems(defaultBooks);
+    }
+  }, [filterGenres]);
 
   return (
     <Drawer
@@ -73,17 +66,16 @@ function FilterDrawer({ items, setItems }) {
           boxSizing: "border-box",
           zIndex: 0,
         },
-        
       }}
       variant="permanent"
       anchor="left"
-      
     >
       <List
-      sx={{
-        top: 55,
-      }}>
-        <AccordionDrawer title="Gêneros">
+        sx={{
+          top: 55,
+        }}
+      >
+        <AccordionDrawer title="Genres">
           <FormGroup>
             <FormControlLabel
               control={
@@ -101,7 +93,7 @@ function FilterDrawer({ items, setItems }) {
                   name="Sports"
                 />
               }
-              label="Esportes"
+              label="Sports"
             />
             <FormControlLabel
               control={
@@ -119,7 +111,7 @@ function FilterDrawer({ items, setItems }) {
                   name="Science"
                 />
               }
-              label="Ciência"
+              label="Science"
             />
             <FormControlLabel
               control={
@@ -128,7 +120,7 @@ function FilterDrawer({ items, setItems }) {
                   name="Horror"
                 />
               }
-              label="Terror"
+              label="Horror"
             />
             <FormControlLabel
               control={
@@ -137,7 +129,7 @@ function FilterDrawer({ items, setItems }) {
                   name="Thriller"
                 />
               }
-              label="Suspense"
+              label="Thriller"
             />
           </FormGroup>
         </AccordionDrawer>

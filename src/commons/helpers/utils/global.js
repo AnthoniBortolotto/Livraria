@@ -42,7 +42,6 @@ export const itemSettings = {
         arrows: true,
         slidesToShow: 1,
         slidesToScroll: 1,
-        
       },
     },
   ],
@@ -59,10 +58,5 @@ export const displayItems = [
     img: "desconto",
     alt: "Clique aqui para acessar os descontos",
     link: "descontos",
-  },
-  {
-    img: "melhor_leitura",
-    alt: "Clique aqui para acessar as melhores leituras",
-    link: "destaques",
   },
 ];

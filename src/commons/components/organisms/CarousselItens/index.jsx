@@ -30,7 +30,7 @@ function CarousselItens({ items, title }) {
                   link={link}
                   genres={genres}
                   rank={rank}
-                  ContentText={"Veja mais"}
+                  ContentText={"View more"}
                 />
               </div>
             )

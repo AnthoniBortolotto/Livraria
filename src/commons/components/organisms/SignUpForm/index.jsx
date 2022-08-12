@@ -31,11 +31,27 @@ function SignInForm() {
   const [errorMsgSenha, setErrorMsgSenha] = useState("");
   const [errorNome, setErrorNome] = useState(false);
   const [errorMsgNome, setErrorMsgNome] = useState("");
+
+  useEffect(() => {
+    checkEmail();
+  }, [email]);
+
+  useEffect(() => {
+    checkSenha();
+  }, [password]);
+
   useEffect(() => {
     checkNome();
-    checkEmail();
-    checkSenha();
-  }, [email, password, nome]);
+  }, [nome]);
+
+  useEffect(() => {
+    setErrorMsgEmail("");
+    setErrorEmail(false);
+    setErrorMsgSenha("");
+    setErrorSenha(false);
+    setErrorNome(false);
+    setErrorMsgNome("");
+  }, []);
 
   function handlerNome(e) {
     setNome(e.target.value);
@@ -49,11 +65,7 @@ function SignInForm() {
   }
   function checkNome() {
     setErrorMsgNome(verificarNome(nome));
-    if (errorMsgNome !== "") {
-      setErrorNome(true);
-    } else {
-      setErrorNome(false);
-    }
+    setErrorNome(errorMsgNome !== "");
   }
   function checkSenha() {
     setErrorMsgSenha(verificarSenha(password));
@@ -72,14 +84,14 @@ function SignInForm() {
       setErrorEmail(false);
     }
   }
-  const createUser = () => {
-    checkEmail();
-    checkSenha();
-    checkNome();
+  const createUser = async () => {
+    await checkEmail();
+    await checkSenha();
+    await checkNome();
     console.log("resultado", errorEmail, errorSenha, errorNome);
     if (!errorEmail && !errorSenha && !errorNome) {
       console.log("chegou");
-      axios
+      /* axios
         .post(`${domain}/user/post`, {
           nome: nome,
           login: email,
@@ -90,7 +102,9 @@ function SignInForm() {
         })
         .catch(function (error) {
           console.log(error);
-        });
+          setErrorEmail(true);
+          setErrorMsgEmail("Email já cadastrado");
+        }); */
       dispatch(changeSignIn());
     }
   };

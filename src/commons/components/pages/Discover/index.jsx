@@ -25,7 +25,7 @@ function Discover({ itemList }) {
   const isMobile = useMediaQuery(mobileScreen);
   return (
     <>
-      <HeadHtml title="Livraria - Descubra" />
+      <HeadHtml title="Booker - Discover" />
       <div className={styles.container}>
         <section className={styles.filter}>
           {!isMobile && <FilterDrawer items={items} setItems={setItems} />}
