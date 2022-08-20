@@ -15,7 +15,7 @@ import HeadHtml from "../../templates/Head";
 export default function Book({ livro, carroussel }) {
   const comment = {
     user: "Roberta Carla",
-    comment: "Este livro é um lixo",
+    comment: "This book is horrible",
     rating: 1.5,
     avatar: "https://www.w3schools.com/howto/img_avatar2.png",
   };
@@ -57,35 +57,39 @@ export default function Book({ livro, carroussel }) {
                       {livro.title}
                     </Typography>
                   </Grid>
-                  <Grid item>
-                    <Grid container direction="row" columnGap={10}>
-                      <Grid item>
-                        <Typography variant="h4" className={styles.rating}>
-                          {livro.rating}
-                        </Typography>
-                      </Grid>
-                      <Grid item>
-                        <StarRatings
-                          defaultValue={parseFloat(livro.rating)}
-                          readOnly
-                        />
-                      </Grid>
-                    </Grid>
-                  </Grid>
+
                   <Grid item marginY={2}>
                     <Grid container>
                       <Grid item className={styles.autor}>
                         <Typography variant="h6">
-                          Autor: {livro.author}
+                          Author: {livro.author}
                         </Typography>
                       </Grid>
                     </Grid>
                   </Grid>
                   <Grid item xs={12}>
                     <Typography variant="h5" marginBottom={5}>
-                      O que os leitores falam sobre o livro:
+                      What the readers say about this book:
                     </Typography>
                   </Grid>
+                  <Grid item xs={12}>
+                    <Grid container>
+                      <Grid item xs={4}>
+                        <Typography fontSize="20pt">
+                          Rating: {livro.rating}
+                        </Typography>
+                      </Grid>
+                      <Grid item xs={4} alignContent="center">
+                        <StarRatings
+                          size="20px"
+                          precision={0.25}
+                          readOnly
+                          defaultValue={livro.rating}
+                        />
+                      </Grid>
+                    </Grid>
+                  </Grid>
+
                   <Grid item xs={12}>
                     <CardComments
                       rating={comment.rating}
@@ -113,7 +117,9 @@ export default function Book({ livro, carroussel }) {
           <Card className={styles.CardStyleDsc}>
             <Grid container direction="column" justifyContent="space-between">
               <Grid item xs={12}>
-                <Typography className={styles.tituloDesc}>Descrição</Typography>
+                <Typography className={styles.tituloDesc}>
+                  Description
+                </Typography>
               </Grid>
               <Grid item xs={12}>
                 <Typography className={styles.desc}>{livro.desc}</Typography>
@@ -121,9 +127,6 @@ export default function Book({ livro, carroussel }) {
             </Grid>
           </Card>
           {/*  <CarrousselItens items={carroussel} title="Veja Mais" /> */}
-          <div>
-            <AddReview />
-          </div>
         </div>
       </section>
     </>
