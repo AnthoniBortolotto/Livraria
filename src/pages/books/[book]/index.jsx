@@ -1,8 +1,8 @@
-import React, { useEffect } from "react";
+import react from "react";
 import axios from "axios";
 import Book from "../../../commons/components/pages/Book";
 import { domain } from "../../../commons/helpers/utils/global";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { joinedBooks } from "../../../commons/helpers/utils/functions";
 
 // You should use getStaticPaths if you’re statically pre-rendering pages that use dynamic routes
@@ -380,8 +380,8 @@ export default function PageBook({ livroBook, carrousselItens }) {
       id: 60220,
     },
   ]);
-  useEffect(() => {
-    console.log(livroBook);
-  }, []);
+  // useEffect(() => {
+  //   console.log(livroBook);
+  // }, []);
   return <Book livro={livroBook} carroussel={carousel} />;
 }

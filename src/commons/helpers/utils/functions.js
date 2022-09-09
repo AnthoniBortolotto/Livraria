@@ -46,10 +46,10 @@ export async function getAllBooks() {
   const highlights = [];
   // run all the requests at same time
   const [books, itensPauloC, itensPopular, itensHighlights] = await axios.all([
-    axios.get(`${domain}/livros/get`),
-    axios.get(`${domain}/livros/get/Paulo Coelho`),
-    axios.get(`${domain}/livro/get/livro/rate/4`),
-    axios.get(`${domain}/livro/get/livro/genre/fiction`),
+    axios.get(`${domain}/books`),
+    axios.get(`${domain}/books/author/Paulo Coelho`),
+    axios.get(`${domain}/books/rate/4`),
+    axios.get(`${domain}/books/genre/fiction`),
   ]);
   books.data.map(({ img, author, genre, rating, title, isbn }, i) => {
     itemList.push({

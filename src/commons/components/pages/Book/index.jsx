@@ -54,42 +54,48 @@ export default function Book({ livro, carroussel }) {
                 >
                   <Grid item>
                     <Typography variant="h1" className={styles.title}>
-                      {livro.title}
+                      {livro.title}          
                     </Typography>
                   </Grid>
-
+                  <Grid item>
+                        <Typography variant="h8" className={styles.genres}>
+                          ({livro.genre})
+                        </Typography>
+                      </Grid>
                   <Grid item marginY={2}>
                     <Grid container>
                       <Grid item className={styles.autor}>
-                        <Typography variant="h6">
-                          Author: {livro.author}
+                        <Typography variant="h8">
+                          by {livro.author} 
+                        </Typography>
+                        <Typography style={{color:'darkgray', marginLeft: '5px'}}>
+                          ({livro.bookformat})
                         </Typography>
                       </Grid>
                     </Grid>
+                    <Grid container>
+                      <Grid item className={styles.rating}>
+                          <Grid item xs={5} alignContent="center">
+                            <StarRatings
+                              size="20px"
+                              precision={0.25}
+                              readOnly
+                              defaultValue={livro.rating}
+                            />
+                          </Grid>
+                          <Grid item xs={4}>
+                            <Typography fontSize="10pt" marginLeft='15px' lineHeight={'2'}>
+                            {livro.rating}
+                            </Typography>
+                          </Grid>
+                        </Grid>
+                      </Grid>
                   </Grid>
                   <Grid item xs={12}>
                     <Typography variant="h5" marginBottom={5}>
                       What the readers say about this book:
                     </Typography>
                   </Grid>
-                  <Grid item xs={12}>
-                    <Grid container>
-                      <Grid item xs={4}>
-                        <Typography fontSize="20pt">
-                          Rating: {livro.rating}
-                        </Typography>
-                      </Grid>
-                      <Grid item xs={4} alignContent="center">
-                        <StarRatings
-                          size="20px"
-                          precision={0.25}
-                          readOnly
-                          defaultValue={livro.rating}
-                        />
-                      </Grid>
-                    </Grid>
-                  </Grid>
-
                   <Grid item xs={12}>
                     <CardComments
                       rating={comment.rating}

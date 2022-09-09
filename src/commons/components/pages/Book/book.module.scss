@@ -13,7 +13,13 @@
     width: 800px;
     font-size: 24pt;
     margin-top: 20px;
-    text-align: center;
+    font-weight: bold;
+  }
+
+  .autor{
+    margin-top: -10px;
+    display: flex;
+    align-items: center;
   }
 
   .desc {
@@ -35,6 +41,11 @@
   }
 }
 
-.rating {
-  margin-top: 20px;
+.rating{
+  display: inline-flex;
+  justify-content: space-between;
+}
+
+.genres{
+  color: darkgrey;
 }
