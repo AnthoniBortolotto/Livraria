@@ -14,8 +14,10 @@ describe("Test AccordionDrawer", () => {
 
     const titulo = getByText(testTitle);
     const texto = getByText(testText);
-
+    
+   
     expect(titulo).toBeInTheDocument();
     expect(texto).toBeInTheDocument();
+ 
   });
 });
