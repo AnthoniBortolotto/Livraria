@@ -7,7 +7,7 @@ import { searchDescubra } from "../commons/helpers/utils/functions";
 
 export const getStaticProps = async ({ params }) => {
   const itemList = [];
-  const books = await axios.get(`${domain}/livros/get`);
+  const books = await axios.get(`${domain}/books/`);
   books.data.map(({ img, author, genre, rating, title, isbn }, i) => {
     itemList.push({
       title,

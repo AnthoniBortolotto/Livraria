@@ -3,7 +3,6 @@ import { styled, alpha } from "@mui/material/styles";
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
-import IconButton from "@mui/material/IconButton";
 import Grid from "@mui/material/Grid";
 import Typography from "@mui/material/Typography";
 import InputBase from "@mui/material/InputBase";
@@ -11,15 +10,11 @@ import MenuItem from "@mui/material/MenuItem";
 import Menu from "@mui/material/Menu";
 import SearchIcon from "@mui/icons-material/Search";
 import HomeIcon from "@mui/icons-material/Home";
-import AccountCircle from "@mui/icons-material/AccountCircle";
-import ExitToAppIcon from "@mui/icons-material/ExitToApp";
 import Logo from "../../atoms/Logo";
 import MenuIcon from "@mui/icons-material/Menu";
 import { mobileScreen } from "../../../helpers/utils/global";
 import useMediaQuery from "@mui/material/useMediaQuery";
-import LoginForm from "../../organisms/LoginForm";
 import { useSelector, useDispatch } from "react-redux";
-import { change } from "../../../redux/loginFormSlice";
 import Drawer from "@mui/material/Drawer";
 import {
   Button,

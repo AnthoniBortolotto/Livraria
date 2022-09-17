@@ -30,13 +30,11 @@ export const getStaticProps = async ({ params }) => {
   let bookData = {};
   const itemList = [];
 
-  bookData = await axios.get(
-    `http://localhost:3001/livros/get/isbn/${params.book}`
-  );
-  bookData = await bookData.data[0];
+  bookData = await axios.get(`http://localhost:3001/books/${params.book}`);
+  bookData = await bookData.data;
   return {
     props: {
-      livroBook: bookData === undefined ? null : bookData,
+      livroBook: bookData,
       carrousselItens: params.book === undefined ? null : params.book,
     },
   };
@@ -380,8 +378,6 @@ export default function PageBook({ livroBook, carrousselItens }) {
       id: 60220,
     },
   ]);
-  // useEffect(() => {
-  //   console.log(livroBook);
-  // }, []);
+
   return <Book livro={livroBook} carroussel={carousel} />;
 }

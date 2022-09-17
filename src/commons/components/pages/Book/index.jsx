@@ -8,7 +8,6 @@ import React, { useEffect } from "react";
 import styles from "./book.module.scss";
 import CarrousselItens from "../../organisms/CarousselItens";
 import CardComments from "../../molecules/CardComments";
-import AddReview from "../../molecules/AddReview";
 import StarRatings from "@mui/material/Rating";
 import HeadHtml from "../../templates/Head";
 
@@ -19,9 +18,6 @@ export default function Book({ livro, carroussel }) {
     rating: 1.5,
     avatar: "https://www.w3schools.com/howto/img_avatar2.png",
   };
-  useEffect(() => {
-    console.log(livro);
-  }, []);
 
   return (
     <>
@@ -80,7 +76,7 @@ export default function Book({ livro, carroussel }) {
                               size="20px"
                               precision={0.25}
                               readOnly
-                              defaultValue={livro.rating}
+                              defaultValue={parseFloat(livro.rating)}
                             />
                           </Grid>
                           <Grid item xs={4}>
