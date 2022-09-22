@@ -18,7 +18,7 @@ export default function Book({ livro, carroussel }) {
     rating: 1.5,
     avatar: "https://www.w3schools.com/howto/img_avatar2.png",
   };
-
+  
   return (
     <>
       <HeadHtml

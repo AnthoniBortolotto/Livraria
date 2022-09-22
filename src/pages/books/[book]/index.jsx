@@ -10,8 +10,7 @@ export const getStaticPaths = async (ctx) => {
   const books = await joinedBooks();
   const paths = [];
 
-  console.log(books)
-
+  console.log(books);
 
   books.map(({ img, author, genre, rating, title, isbn }, i) => {
     if (isbn && isbn != null) {
@@ -23,8 +22,6 @@ export const getStaticPaths = async (ctx) => {
       });
     }
   });
-
-
 
   return {
     paths: paths,
@@ -40,10 +37,12 @@ export const getStaticProps = async ({ params }) => {
   bookData = await axios.get(`http://localhost:3001/books/${params.book}`);
   bookData = await bookData.data;
 
-  carroussel = await axios.get(`http://localhost:3001/books/author/${params.author}`);
+  carroussel = await axios.get(
+    `http://localhost:3001/books/author/${bookData.author}`
+  );
   carroussel = await carroussel.data;
 
-  console.log(carroussel + params.author);
+  
 
   return {
     props: {
@@ -54,5 +53,6 @@ export const getStaticProps = async ({ params }) => {
 };
 
 export default function PageBook({ livroBook, carrousselItens }) {
+
   return <Book livro={livroBook} carroussel={carrousselItens} />;
 }
