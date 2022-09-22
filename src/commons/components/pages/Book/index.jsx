@@ -31,7 +31,6 @@ export default function Book({ livro, carroussel }) {
               container
               direction="row"
               justifyContent="flex-start"
-              spacing={10}
             >
               <Grid item paddingBottom="24px">
                 <CardContent>
@@ -41,6 +40,14 @@ export default function Book({ livro, carroussel }) {
                     className={styles.CardMediaStyle}
                   />
                 </CardContent>
+                <Button 
+                    variant="contained" 
+                    className={styles.button}
+                    href={livro.link}
+                    target="_blank"
+                    >
+                    See more details
+                    </Button>
               </Grid>
               <Grid item>
                 <Grid
@@ -64,71 +71,48 @@ export default function Book({ livro, carroussel }) {
                         <Typography variant="h8">
                           by {livro.author} 
                         </Typography>
-                        <Typography style={{color:'darkgray', marginLeft: '5px'}}>
-                          ({livro.bookformat})
-                        </Typography>
                       </Grid>
                     </Grid>
-                    <Grid container>
+                    <Grid container className={styles.reviews}>
                       <Grid item className={styles.rating}>
-                          <Grid item xs={5} alignContent="center">
+                          <Grid item xs={8}>
                             <StarRatings
-                              size="20px"
                               precision={0.25}
                               readOnly
                               defaultValue={parseFloat(livro.rating)}
                             />
                           </Grid>
-                          <Grid item xs={4}>
-                            <Typography fontSize="10pt" marginLeft='15px' lineHeight={'2'}>
+                          <Grid item marginLeft={"2px"}>
+                            <Typography>
                             {livro.rating}
+                            </Typography>
+                          </Grid>
+                          <Grid xs={15} style={{color: 'darkgrey', marginLeft: '8px',}}>
+                            <Typography>
+                            {livro.totalratings} Ratings - {livro.reviews} Reviews
                             </Typography>
                           </Grid>
                         </Grid>
                       </Grid>
                   </Grid>
-                  <Grid item xs={12}>
-                    <Typography variant="h5" marginBottom={5}>
-                      What the readers say about this book:
+                  <Grid 
+                  width="100vh">
+                    <Typography variant="h8" className={styles.description}>
+                      {livro.desc}
                     </Typography>
-                  </Grid>
-                  <Grid item xs={12}>
-                    <CardComments
-                      rating={comment.rating}
-                      review={comment.comment}
-                      avatar={comment.avatar}
-                      user={comment.user}
-                    />
-                    {/* <Grid container justifyContent="space-between">
-      {comments.map(({ rating, review, avatar, user }, i) => (
-        <Grid xs={12} key={i}>
-          <CardComments
-            rating={rating}
-            review={review}
-            avatar={avatar}
-            user={user}
-          />
-        </Grid>
-      ))}
-    </Grid> */}
+                    <hr/>
+                    <Typography fontSize={"12px"}>
+                      {livro.bookformat}, {livro.pages} pages
+                    </Typography>
+                    <Typography fontSize={"12px"}>
+                      ISBN: {livro.isbn}, ISBN13: {livro.isbn13}
+                    </Typography>
                   </Grid>
                 </Grid>
               </Grid>
             </Grid>
           </Card>
-          <Card className={styles.CardStyleDsc}>
-            <Grid container direction="column" justifyContent="space-between">
-              <Grid item xs={12}>
-                <Typography className={styles.tituloDesc}>
-                  Description
-                </Typography>
-              </Grid>
-              <Grid item xs={12}>
-                <Typography className={styles.desc}>{livro.desc}</Typography>
-              </Grid>
-            </Grid>
-          </Card>
-          {/*  <CarrousselItens items={carroussel} title="Veja Mais" /> */}
+           <CarrousselItens items={carroussel} title="Veja Mais" />
         </div>
       </section>
     </>
