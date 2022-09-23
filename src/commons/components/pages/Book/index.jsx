@@ -18,7 +18,7 @@ export default function Book({ livro, carroussel }) {
     rating: 1.5,
     avatar: "https://www.w3schools.com/howto/img_avatar2.png",
   };
-  
+
   return (
     <>
       <HeadHtml
@@ -27,11 +27,7 @@ export default function Book({ livro, carroussel }) {
       <section className={styles.container}>
         <div className={`default-margin containerDesk`}>
           <Card className={styles.CardStyleImg}>
-            <Grid
-              container
-              direction="row"
-              justifyContent="flex-start"
-            >
+            <Grid container direction="row" justifyContent="flex-start">
               <Grid item paddingBottom="24px">
                 <CardContent>
                   <CardMedia
@@ -40,14 +36,14 @@ export default function Book({ livro, carroussel }) {
                     className={styles.CardMediaStyle}
                   />
                 </CardContent>
-                <Button 
-                    variant="contained" 
-                    className={styles.button}
-                    href={livro.link}
-                    target="_blank"
-                    >
-                    See more details
-                    </Button>
+                <Button
+                  variant="contained"
+                  className={styles.button}
+                  href={livro.link}
+                  target="_blank"
+                >
+                  See more details
+                </Button>
               </Grid>
               <Grid item>
                 <Grid
@@ -57,50 +53,49 @@ export default function Book({ livro, carroussel }) {
                 >
                   <Grid item>
                     <Typography variant="h1" className={styles.title}>
-                      {livro.title}          
+                      {livro.title}
                     </Typography>
                   </Grid>
                   <Grid item>
-                        <Typography variant="h8" className={styles.genres}>
-                          ({livro.genre})
-                        </Typography>
-                      </Grid>
+                    <Typography variant="h8" className={styles.genres}>
+                      ({livro.genre})
+                    </Typography>
+                  </Grid>
                   <Grid item marginY={2}>
                     <Grid container>
                       <Grid item className={styles.autor}>
-                        <Typography variant="h8">
-                          by {livro.author} 
-                        </Typography>
+                        <Typography variant="h8">by {livro.author}</Typography>
                       </Grid>
                     </Grid>
                     <Grid container className={styles.reviews}>
                       <Grid item className={styles.rating}>
-                          <Grid item xs={8}>
-                            <StarRatings
-                              precision={0.25}
-                              readOnly
-                              defaultValue={parseFloat(livro.rating)}
-                            />
-                          </Grid>
-                          <Grid item marginLeft={"2px"}>
-                            <Typography>
-                            {livro.rating}
-                            </Typography>
-                          </Grid>
-                          <Grid xs={15} style={{color: 'darkgrey', marginLeft: '8px',}}>
-                            <Typography>
-                            {livro.totalratings} Ratings - {livro.reviews} Reviews
-                            </Typography>
-                          </Grid>
+                        <Grid item xs={8}>
+                          <StarRatings
+                            precision={0.25}
+                            readOnly
+                            defaultValue={parseFloat(livro.rating)}
+                          />
+                        </Grid>
+                        <Grid item marginLeft={"2px"}>
+                          <Typography>{livro.rating}</Typography>
+                        </Grid>
+                        <Grid
+                          xs={15}
+                          style={{ color: "darkgrey", marginLeft: "8px" }}
+                        >
+                          <Typography>
+                            {livro.totalratings} Ratings - {livro.reviews}{" "}
+                            Reviews
+                          </Typography>
                         </Grid>
                       </Grid>
+                    </Grid>
                   </Grid>
-                  <Grid 
-                  width="100vh">
+                  <Grid width="100vh">
                     <Typography variant="h8" className={styles.description}>
                       {livro.desc}
                     </Typography>
-                    <hr/>
+                    <hr />
                     <Typography fontSize={"12px"}>
                       {livro.bookformat}, {livro.pages} pages
                     </Typography>
@@ -112,7 +107,9 @@ export default function Book({ livro, carroussel }) {
               </Grid>
             </Grid>
           </Card>
-           <CarrousselItens items={carroussel} title="Veja Mais" />
+          {carroussel.length > 5 && (
+            <CarrousselItens items={carroussel} title="Veja Mais" />
+          )}
         </div>
       </section>
     </>
