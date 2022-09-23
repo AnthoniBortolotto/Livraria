@@ -14,6 +14,10 @@ const customJestConfig = {
     "./src/commons/components/atoms/**/*.{js,jsx,ts,tsx}",
     "./src/commons/components/molecules/**/*.{js,jsx,ts,tsx}",
   ],
+  coveragePathIgnorePatterns: [
+    "./src/commons/components/organisms/CarousselItens/*.{js,jsx,ts,tsx}",
+    "./src/commons/components/molecules/CarousselHomeDisplay/*.{js,jsx,ts,tsx}",
+  ],
   // Add more setup options before each test is run
   // setupFilesAfterEnv: ['<rootDir>/jest.setup.js'],
   // if using TypeScript with a baseUrl set to the root directory then you need the below for alias' to work

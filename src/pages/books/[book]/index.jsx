@@ -42,8 +42,6 @@ export const getStaticProps = async ({ params }) => {
   );
   carroussel = await carroussel.data;
 
-  
-
   return {
     props: {
       livroBook: bookData,
@@ -53,6 +51,5 @@ export const getStaticProps = async ({ params }) => {
 };
 
 export default function PageBook({ livroBook, carrousselItens }) {
-
   return <Book livro={livroBook} carroussel={carrousselItens} />;
 }
